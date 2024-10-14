@@ -35,25 +35,6 @@ export default function TableChildrend({ products }: any) {
       }
     },
     {
-      title: 'Topping ',
-      dataIndex: 'topping',
-      key: 'topping',
-      width: 230,
-      render: (toppings: IToppingRefProduct[]) => (
-        <>
-          <div className='flex flex-col gap-1'>
-            {toppings.slice(0, 2).map((topping: IToppingRefProduct) => (
-              <div key={topping._id} className='relative grid grid-cols-2'>
-                <p className='border-r-graydark w-full pr-3 uppercase border-r border-opacity-50'>{topping.name}</p>
-                <p className='w-full pl-3'>{formatCurrency(topping.price)}</p>
-              </div>
-            ))}
-          </div>
-          <p className=''>{toppings?.length > 2 && '....'}</p>
-        </>
-      )
-    },
-    {
       title: 'Số Lượng',
       dataIndex: 'quantity',
       key: 'quantity',

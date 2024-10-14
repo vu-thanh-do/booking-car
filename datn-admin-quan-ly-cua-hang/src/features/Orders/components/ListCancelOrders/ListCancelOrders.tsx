@@ -201,7 +201,7 @@ const ListCancelOrders = () => {
       )
     },
     {
-      title: 'Thời gian đặt phòng',
+      title: 'Thời gian đặt vé',
       dataIndex: 'timeOrder',
       key: 'timeOrder',
       width: 200,

@@ -46,31 +46,6 @@ const cartSchema = new mongoose.Schema(
         },
       },
     ],
-    // products: [
-    //   {
-    //     productId: {
-    //       type: mongoose.Schema.Types.ObjectId,
-    //       ref: "Product",
-    //       required: true,
-    //     },
-    //     quantity: {
-    //       type: Number,
-    //       required: true,
-    //     },
-    //     price: {
-    //       type: Number,
-    //       require: true,
-    //     },
-    //     toppingOrder: [
-    //       {
-    //         type: mongoose.Schema.Types.ObjectId,
-    //         ref: 'Topping',
-    //       },
-    //     ],
-    //   },
-    // ],
-
-    // totalAfterDiscount: Number,
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
@@ -80,7 +55,7 @@ const cartSchema = new mongoose.Schema(
       type: Date,
     },
     endDate: {
-      type: Date,
+      type: String,
     },
   },
   {

@@ -30,7 +30,6 @@ const ListPendingOrders = () => {
   const [pendingOrder, setPendingOrder] = useState<any>()
   const { orderDate } = useAppSelector((state) => state.orders)
   const { user } = useAppSelector((state: RootState) => state.persistedReducer.auth)
-
   const [options, setoptions] = useState({
     page: 1,
     limit: 10,
@@ -147,7 +146,7 @@ const ListPendingOrders = () => {
         ClientSocket.sendNotification({
           idUser,
           idOrder,
-          content: `Đơn hàng "${idOrder.toUpperCase()}" đã được xác nhận`
+          content: `Vé "${idOrder.toUpperCase()}" đã được xác nhận`
         })
       })
       .catch(() => messageAlert('Thay đổi trạng thái thất bại', 'error'))
@@ -163,7 +162,7 @@ const ListPendingOrders = () => {
             ClientSocket.sendNotification({
               idUser: order.user._id,
               idOrder: selectItem as string,
-              content: `Đơn hàng "${(selectItem as string).toUpperCase()}" đã được xác nhận`
+              content: `Vé "${(selectItem as string).toUpperCase()}" đã được xác nhận`
             })
           }
         })
@@ -211,7 +210,7 @@ const ListPendingOrders = () => {
       render: (user: any) => <UserInfoRow user={user} />
     },
     {
-      title: 'Ảnh Phòng',
+      title: 'Ảnh Xe',
       dataIndex: 'products',
       key: 'products',
       width: 100,
@@ -250,7 +249,7 @@ const ListPendingOrders = () => {
           className={`text-white capitalize font-semibold bg-meta-6
           rounded inline-block px-2 py-1`}
         >
-          {data.payment !== 'cod' && status == 'pending' ? 'Thanh toán' : 'Duyệt đơn'}
+          {data.payment !== 'cod' && status == 'pending' ? 'Thanh toán' : 'Chưa thanh toán'}
         </span>
       )
     },
@@ -272,7 +271,7 @@ const ListPendingOrders = () => {
       render: (_: any, order) => (
         <div className='flex items-center justify-center'>
           <Space>
-            <Tooltip title='Xem chi tiết đơn hàng'>
+            <Tooltip title='Xem chi tiết vé'>
               <ButtonAnt
                 size='large'
                 className='bg-meta-6 hover:!text-white flex items-center justify-center text-white'
@@ -283,7 +282,7 @@ const ListPendingOrders = () => {
                 }}
               />
             </Tooltip>
-            <Tooltip title='Xác nhận đơn hàng'>
+            <Tooltip title='Xác nhận vé'>
               <ButtonAnt
                 size='large'
                 className='bg-meta-5 hover:!text-white flex items-center justify-center text-white'
@@ -295,18 +294,18 @@ const ListPendingOrders = () => {
               />
             </Tooltip>
 
-            <Tooltip title='Hủy đơn hàng'>
+            {/* <Tooltip title='Hủy vé'>
               {order && !order.user_order ? (
                 <Popconfirm
-                  title='Bạn muốn hủy đơn hàng này chứ ?'
+                  title='Bạn muốn hủy vé này chứ ?'
                   onConfirm={() => {
                     cancelOrder({ id: order.key, reasonCancelOrder: 'hủy' })
                       .unwrap()
                       .then(() => {
-                        message.success(`Hủy đơn hàng thành công`)
+                        message.success(`Hủy vé thành công`)
                       })
                       .catch(() => {
-                        messageAlert('Hủy đơn hàng thất bại.Hãy thử lại! ', 'error', 5)
+                        messageAlert('Hủy vé thất bại.Hãy thử lại! ', 'error', 5)
                       })
                     ClientSocket.cancelOrder(order.key)
                   }}
@@ -330,7 +329,7 @@ const ListPendingOrders = () => {
                   }}
                 />
               )}
-            </Tooltip>
+            </Tooltip> */}
           </Space>
         </div>
       )
@@ -368,7 +367,7 @@ const ListPendingOrders = () => {
       {hasSelected && (
         <Space>
           <Popconfirm
-            title='Bạn muốn xác nhận tất cả đơn hàng này?'
+            title='Bạn muốn xác nhận tất cả vé này?'
             onConfirm={onConfirmOrderMany}
             onCancel={() => setSelectedRowKeys([])}
           >

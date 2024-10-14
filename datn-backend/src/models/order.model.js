@@ -102,7 +102,7 @@ const orderSchema = new mongoose.Schema(
       type: Date,
     },
     endDate: {
-      type: Date,
+      type: String,
     },
   },
   {

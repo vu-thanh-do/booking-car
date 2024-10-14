@@ -33,9 +33,8 @@ const content = (
   <div className='w-72'>
     <ul className='list-disc pl-4'>
       <li>Kiểm tra vé trước khi thanh toán.</li>
-      <li>Đổi trả  nếu bị lỗi, sai sót.</li>
+      <li>Đổi trả nếu bị lỗi, sai sót.</li>
       <li>Không thể đổi trả sau khi đã nhận và kiểm tra với nhân viên .</li>
-
     </ul>
   </div>
 )
@@ -96,7 +95,7 @@ const Checkout = () => {
       dataInfoUser.user.address?.length &&
         (dataInfoUser.user.address as IUserAddress[])?.map((item) => {
           if (item.default) {
-            setValue('shippingLocation', "ccc")
+            setValue('shippingLocation', 'ccc')
             setValue('phone', item.phone)
             return
           }
@@ -114,7 +113,12 @@ const Checkout = () => {
           if (getData == 'list') {
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const { total, sale, _id, ...rest } = data
-            arrTotal.push({ ...rest, name: item.name })
+            arrTotal.push({
+              ...rest,
+              name: item.name,
+              startDate: dataCartCheckout.startDate,
+              endDate: dataCartCheckout.endDate
+            })
           } else {
             let value: number | undefined
             if (getData === 'quantity') {
@@ -131,8 +135,9 @@ const Checkout = () => {
       )
       return getData == 'list' ? arrTotal : arrTotalNumbers
     },
-    [dataCartCheckout.items]
+    [dataCartCheckout.items, dataCartCheckout.endDate, dataCartCheckout.startDate]
   )
+  console.log(getData('list'), 'dataCartCheckout')
   console.log(dataCartCheckout.items, 'dataCartCheckout')
   const totalQuantity = useMemo(() => {
     const all = getData('quantity') as number[]
@@ -176,7 +181,7 @@ const Checkout = () => {
         items: getData('list'),
         total: totalAllMoneyCheckOut <= 0 ? 0 : totalAllMoneyCheckOut,
         startDate: dataCartCheckout.items[0].startDate,
-        endDate:dataCartCheckout.items[0].endDate,
+        endDate: dataCartCheckout.items[0].endDate,
         priceShipping: moneyShipping,
         noteOrder: textNoteOrderRef.current?.value !== '' ? textNoteOrderRef.current?.value : ' ',
         moneyPromotion: voucherChecked?._id
@@ -190,7 +195,7 @@ const Checkout = () => {
           name: data.name,
           email: data.email,
           phone: data.phone,
-          address: "xxxxx",
+          address: 'xxxxx',
           noteShipping: data.shippingNote == '' ? ' ' : data.shippingNote
         }
       }
@@ -205,10 +210,10 @@ const Checkout = () => {
             .unwrap()
             .then((res) => {
               if (res.error || res?.error?.data?.error) {
-                return toast.error('đặt phòng thất bại' + res.error.data.error)
+                return toast.error('đặt vé thất bại' + res.error.data.error)
               } else {
                 ClientSocket.sendNotificationToAdmin(
-                  `khách sạn "${res.order.orderNew._id.toUpperCase()}" vừa được tạo bởi khách hàng "${
+                  `vé "${res.order.orderNew._id.toUpperCase()}" vừa được tạo bởi khách hàng "${
                     res.order.orderNew.inforOrderShipping.name
                   }" và đang chờ xác nhận.`
                 )
@@ -348,7 +353,7 @@ const Checkout = () => {
                 />
                 <span className={`${styles.checkmark_radio} group-hover:bg-[#ccc]`}></span>
               </label>
-              <label className={` ${styles.container_radio} cod-payment block group`}>
+              {/* <label className={` ${styles.container_radio} cod-payment block group`}>
                 <span className='text-sm'>Thanh toán qua Ví vnPay</span>
                 <input
                   className='absolute opacity-0'
@@ -361,7 +366,7 @@ const Checkout = () => {
               </label>
               <label className={` ${styles.container_radio} cod-payment group !hidden`}></label>
 
-              {errors.paymentMethod && <span className='text-red-500 text-[13px]'>{errors.paymentMethod.message}</span>}
+              {errors.paymentMethod && <span className='text-red-500 text-[13px]'>{errors.paymentMethod.message}</span>} */}
             </div>
           </div>
         </form>
@@ -433,7 +438,7 @@ const Checkout = () => {
             <div className=''>
               <Button type='checkout' style={cod || vnpay ? 'bg-gray-500' : ''} size='large' shape='circle'>
                 <span className='block' onClick={handleFormInfoCheckout}>
-                  Đặt phòng
+                  Đặt vé
                 </span>
               </Button>
 

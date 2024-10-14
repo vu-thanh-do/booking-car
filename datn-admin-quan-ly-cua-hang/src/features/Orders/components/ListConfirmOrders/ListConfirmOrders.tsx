@@ -210,7 +210,7 @@ const ListConfirmOrders = () => {
       render: (user: any) => <UserInfoRow user={user} />
     },
     {
-      title: 'Ảnh Phòng',
+      title: 'Ảnh Xe',
       dataIndex: 'products',
       key: 'products',
       width: 105,
@@ -245,11 +245,11 @@ const ListConfirmOrders = () => {
       key: 'status',
       width: 120,
       render: () => (
-        <span className={`text-white capitalize font-semibold bg-meta-5 rounded inline-block px-2 py-1`}>Xác nhận</span>
+        <span className={`text-white capitalize font-semibold bg-meta-5 rounded inline-block px-2 py-1`}>Đã thanh toán</span>
       )
     },
     {
-      title: 'Thời gian đặt phòng',
+      title: 'Thời gian  vé',
       dataIndex: 'timeOrder',
       key: 'timeOrder',
       width: 200,
@@ -278,7 +278,7 @@ const ListConfirmOrders = () => {
                 }}
               />
             </Tooltip>
-            <Tooltip title='Hoàn thành đơn hàng'>
+            {/* <Tooltip title='Hoàn thành đơn hàng'>
               <ButtonAnt
                 size='large'
                 className='bg-meta-3 hover:!text-white flex items-center justify-center text-white'
@@ -288,7 +288,7 @@ const ListConfirmOrders = () => {
                   ClientSocket.doneOrder(order.key)
                 }}
               />
-            </Tooltip>
+            </Tooltip> */}
           </Space>
         </div>
       )

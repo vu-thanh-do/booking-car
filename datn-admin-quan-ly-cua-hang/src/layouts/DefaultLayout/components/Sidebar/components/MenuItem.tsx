@@ -2,14 +2,11 @@ import { BarChartOutlined, ShoppingOutlined, UserOutlined } from '@ant-design/ic
 import { AiOutlineControl, AiOutlineFontSize } from 'react-icons/ai'
 import { BiCategoryAlt, BiSolidCategoryAlt } from 'react-icons/bi'
 import { FaClipboardList, FaImages, FaRegNewspaper, FaUserEdit, FaUserFriends } from 'react-icons/fa'
-
 import type { MenuProps } from 'antd'
 import { HiCollection } from 'react-icons/hi'
 import { IoTicket } from 'react-icons/io5'
 import { NavLink } from 'react-router-dom'
-
 type MenuItem = Required<MenuProps>['items'][number]
-
 function getItem(
   label: React.ReactNode,
   key: React.Key,
@@ -25,10 +22,9 @@ function getItem(
     type
   } as MenuItem
 }
-
 export const items: MenuProps['items'] = [
   // giao diên chính
-  getItem(<NavLink to={`/dashboard`}>Thống kê</NavLink>, 'dashboard', <BarChartOutlined />),
+  // getItem(<NavLink to={`/dashboard`}>Thống kê</NavLink>, 'dashboard', <BarChartOutlined />),
 
   // quản lý đơn hàng
   getItem(<NavLink to={`/manager/orders`}>Đơn hàng</NavLink>, 'orders', <FaClipboardList />),
@@ -44,21 +40,15 @@ export const items: MenuProps['items'] = [
     // getItem(<NavLink to={`/manager/blogs`}>Bài viết</NavLink>, 'blogs', <FaRegNewspaper />),
     getItem(<NavLink to={`/manager/sliders`}>Sliders</NavLink>, 'sliders', <FaImages />)
   ]),
-
   // quản lý người dùng
   getItem('Người dùng', 'users', <UserOutlined />, [
     getItem(<NavLink to={`/manager/customers`}>Khách hàng</NavLink>, 'customers', <FaUserFriends />),
     getItem(<NavLink to={`/manager/staffs`}>Nhân viên</NavLink>, 'staffs', <FaUserEdit />)
   ]),
   // getItem(<a href={`http://localhost:4001/admin/chat`} target='_blank'>Hỗ trợ khách hàng</a>, 'dashboardx'),
-  getItem(<NavLink to={`/manager/feedback`} >Quản lý đánh giá</NavLink>, 'dashboardxs'),
-
-
-
-
+  // getItem(<NavLink to={`/manager/feedback`} >Quản lý đánh giá</NavLink>, 'dashboardxs'),
   // getItem(<NavLink to={`/settings`}>Cài đặt</NavLink>, 'settings', <SettingOutlined />)
 ]
-
 export const itemsStaff: MenuProps['items'] = [
   // quản lý đơn hàng
   getItem(<NavLink to={`/manager/orders`}>Đơn hàng</NavLink>, 'orders', <FaClipboardList />),
@@ -75,7 +65,7 @@ export const itemsStaff: MenuProps['items'] = [
     getItem(<NavLink to={`/manager/sliders`}>Sliders</NavLink>, 'sliders', <FaImages />)
   ]),
   // getItem(<a href={`http://localhost:4001/admin/chat`} target='_blank'>Hỗ trợ khách hàng</a>, 'dashboardx'),
-  getItem(<NavLink to={`/manager/feedback`} >Quản lý đánh giá</NavLink>, 'dashboardxs'),
+  // getItem(<NavLink to={`/manager/feedback`} >Quản lý đánh giá</NavLink>, 'dashboardxs'),
 
 // feedback
 

@@ -27,17 +27,12 @@ const MyOrderDetail = () => {
     {
       index: 0,
       name: 'pending',
-      title: 'Chờ Xác Nhận'
+      title: 'Chưa thanh toán'
     },
     {
       index: 1,
       name: 'confirmed',
-      title: 'Đã Xác nhận'
-    },
-    {
-      index: 2,
-      name: 'done',
-      title: 'Hoàn Thành'
+      title: 'Đã Thanh  toán'
     }
   ]
   const currentStatus = items.find((item) => item.name === orderData?.order?.status)
@@ -57,23 +52,23 @@ const MyOrderDetail = () => {
             </span>
           </div>
           <div className='uppercase flex items-center gap-x-3 text-sm'>
-            <span>Mã đơn hàng: {orderData?.order?._id}</span>
+            <span>Mã vé: {orderData?.order?._id}</span>
             <span>|</span>
 
             {orderData?.order?.status === 'canceled' ? (
-              <span className='text-[#EE4D2D]'>Đơn hàng đã được hủy</span>
+              <span className='text-[#EE4D2D]'>vé đã được hủy</span>
             ) : (
-              <span className='text-[#EE4D2D]'>Đơn hàng {currentStatus?.title}</span>
+              <span className='text-[#EE4D2D]'>vé {currentStatus?.title}</span>
             )}
           </div>
         </div>
         <Divider />
         <div className='order-status-step'>
           <div className='mb-10'>
-            <h2 className='mb-5 text-xl text-[#866312]'>Trạng thái đơn hàng</h2>
+            <h2 className='mb-5 text-xl text-[#866312]'>Trạng thái vé</h2>
             {orderData?.order?.status === 'canceled' ? (
               <div className='flex flex-col justify-center items-center bg-[#fffcf5] py-6 '>
-                <span className='text-[20px] text-[#ee4d2d]'>Đã hủy đơn hàng</span>
+                <span className='text-[20px] text-[#ee4d2d]'>Đã hủy vé</span>
                 <span className='text-sm'>Lý do: {orderData?.order?.reasonCancelOrder}</span>
               </div>
             ) : (
@@ -97,14 +92,14 @@ const MyOrderDetail = () => {
                 </span>
               )}
               <span className='text-[12px] text-[#0000008a]'>
-                Thời gian đặt phòng: {orderData?.order?.createdAt && formatDate(orderData?.order?.createdAt)}
+                Thời gian đặt  vé: {orderData?.order?.createdAt && formatDate(orderData?.order?.createdAt)}
               </span>
             </div>
           </div>
           <div className='bg_image'></div>
         </div>
         <div className='content'>
-          <h2 className='mb-4 text-xl text-[#866312]'>Thông tin phòng đã đặt</h2>
+          <h2 className='mb-4 text-xl text-[#866312]'>Thông tin  vé đã đặt</h2>
           <div className='list-items'>
             {orderData &&
               orderData?.order?.items.length > 0 &&
@@ -181,20 +176,9 @@ const MyOrderDetail = () => {
                 {totalPrice && formatCurrency(totalPrice)}
               </div>
             </div>
+
             <div className='flex justify-end  items-center py-3 text-right border-b border-b-[#ccc]'>
-              <div className='text-[12px] pr-2'>Thời gian lưu trú</div>
-              <div className='w-[200px] text-[#866312] border-l border-l-[#ccc]'>
-                {orderData &&
-                  orderData?.order?.items?.map((preResult, index) => (
-                    <div key={index}>
-                      <p>{Number(preResult?.timBooking / preResult?.product?.timBooking)} Ngày</p>
-                    </div>
-                  ))}
-                {/*  */}
-              </div>
-            </div>
-            <div className='flex justify-end  items-center py-3 text-right border-b border-b-[#ccc]'>
-              <div className='text-[12px] pr-2'>Loại phòng</div>
+              <div className='text-[12px] pr-2'>Loại xe</div>
               <div className='w-[200px] text-[#866312] border-l border-l-[#ccc]'>
                 {orderData &&
                   orderData?.order?.items?.map((preResult, index) => (

@@ -59,7 +59,7 @@ const PaymentResult = () => {
                 className='bg-white  shadow-lg rounded-xl w-[calc(100%-20px)] md:w-max'
                 status='error'
                 title='Bạn đã hủy thanh toán giao dịch thành công 🎉'
-                subTitle='Nếu bạn muốn đặt phòng thì bấm nút bên dưới nhé! 😃'
+                subTitle='Nếu bạn muốn đặt vé thì bấm nút bên dưới nhé! 😃'
                 extra={[
                   <Button
                     size='large'
@@ -204,7 +204,7 @@ const PaymentResult = () => {
               .unwrap()
               .then((res) => {
                 if (res?.error) {
-                  return toast.error('Xin lỗi đã có vấn đề về đặt phòng của bạn' + res?.error?.data?.error)
+                  return toast.error('Xin lỗi đã có vấn đề về đặt vé của bạn' + res?.error?.data?.error)
                 } else {
                   localStorage.removeItem('location')
                   dispatch(resetAllCart())
@@ -238,7 +238,7 @@ const PaymentResult = () => {
             .unwrap()
             .then((res) => {
               if (res.error) {
-                return toast.error('Xin lỗi đã có vấn đề về đặt phòng của bạn' + res.error.data.error)
+                return toast.error('Xin lỗi đã có vấn đề về đặt vé của bạn' + res.error.data.error)
               } else {
                 dispatch(resetAllCart())
                 ClientSocket.sendNotificationToAdmin(

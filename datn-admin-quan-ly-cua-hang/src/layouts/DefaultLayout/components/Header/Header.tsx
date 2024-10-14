@@ -79,7 +79,7 @@ const Header = (props: { sidebarOpen: string | boolean | undefined; setSidebarOp
             <DarkModeSwitcher />
 
             {/* <!-- Notification Menu Area --> */}
-            <DropdownNotification />
+            {/* <DropdownNotification /> */}
 
             {/* <!-- Chat Notification Area --> */}
             {/* <DropdownMessage /> */}

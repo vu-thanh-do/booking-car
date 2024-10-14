@@ -10,16 +10,19 @@ const dateOrderSchema = new mongoose.Schema({
     default: Date.now,
   },
   endDate: {
-    type: Date,
+    type: String,
   },
   idRoom: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Product',
   },
-  iduser :{
+  iduser: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-  }
+  },
+  chair: {
+    type: String,
+  },
 });
 
 dateOrderSchema.plugin(mongoosePaginate);

@@ -11,7 +11,7 @@ const FeatureSize = () => {
 
   return (
     <div>
-      <Breadcrumb pageName='Sizes'>
+      <Breadcrumb pageName='Ghế xe'>
         <Button icon={<PlusIcon />} onClick={() => dispatch(setOpenDrawer(true))}>
           Thêm
         </Button>

@@ -111,7 +111,7 @@ const DetailOrder = ({ open }: DetailOrderProps) => {
     return (
       <Row gutter={[16, 16]}>
         <Col span={24}>
-          <h1 className='text-lg font-semibold'>Tổng quan đơn hàng</h1>
+          <h1 className='text-lg font-semibold'>Tổng quan vé</h1>
         </Col>
         <Col span={12}>
           <span className='text-base'></span>
@@ -143,7 +143,7 @@ const DetailOrder = ({ open }: DetailOrderProps) => {
 
   return (
     <Drawer
-      title={<h1 className='text-2xl'>Chi tiết đơn hàng</h1>}
+      title={<h1 className='text-2xl'>Chi tiết vé</h1>}
       placement='top'
       size='large'
       destroyOnClose
@@ -152,14 +152,15 @@ const DetailOrder = ({ open }: DetailOrderProps) => {
       open={open}
       extra={
         <Space>
-          <Button
+          {/* <Button
             styleClass={orderData.status === 'confirmed' ? '' : 'hidden'}
             variant='success'
             size='sm'
             onClick={() => onDoneOrder(orderData.key)}
           >
             Hoàn thành
-          </Button>
+          </Button> */}
+          
           <Button
             styleClass={
               orderData.status === 'confirmed' || orderData.status === 'done' || orderData.status === 'canceled'
@@ -173,7 +174,7 @@ const DetailOrder = ({ open }: DetailOrderProps) => {
             Xác nhận
           </Button>
 
-          <Button
+          {/* <Button
             styleClass={
               orderData.status === 'canceled' || orderData.status === 'done' || orderData.status === 'confirmed'
                 ? 'hidden'
@@ -187,7 +188,7 @@ const DetailOrder = ({ open }: DetailOrderProps) => {
             }}
           >
             Hủy đơn
-          </Button>
+          </Button> */}
         </Space>
       }
     >
@@ -245,19 +246,19 @@ const DetailOrder = ({ open }: DetailOrderProps) => {
                   orderData.status === 'canceled'
                     ? 'bg-meta-1'
                     : orderData.status === 'pending'
-                    ? 'bg-meta-6'
-                    : orderData.status === 'done'
-                    ? 'bg-meta-3'
-                    : 'bg-meta-5'
+                      ? 'bg-meta-6'
+                      : orderData.status === 'done'
+                        ? 'bg-meta-3'
+                        : 'bg-meta-5'
                 } rounded inline-block px-2 py-1`}
               >
                 {orderData.status === 'canceled'
                   ? 'Đã hủy'
                   : orderData.status === 'pending'
-                  ? 'Chờ xác nhận'
-                  : orderData.status === 'done'
-                  ? 'Hoàn thành'
-                  : 'Xác nhận'}
+                    ? 'Chưa thanh toán'
+                    : orderData.status === 'done'
+                      ? 'Hoàn thành'
+                      : 'Đã thanh toán'}
               </span>
             </div>
             {orderData?.reasonCancelOrder && (

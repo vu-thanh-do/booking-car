@@ -154,39 +154,36 @@ const PopupDetailProduct = ({ showPopup, togglePopup, product, dateBooked }: Pop
       endDate: dayjs(booking.endDate)
     }
   })
-  console.log('bookedDates', dateBooked)
-  const disabledDate = (current) => {
-    if (!current) {
-      return false
-    }
-    // Check if current date is within any of the date ranges
-    return dateBooked.some((range) => {
-      const start = dayjs(range.startDate).startOf('day')
-      const end = dayjs(range.endDate).endOf('day')
-      return (
-        (current.isAfter(start) && current.isBefore(end)) || current.isSame(start, 'day') || current.isSame(end, 'day')
-      )
+  const getDisabledHours = (current: any) => {
+    const disabledHoursArray: any[] = []
+    dateBooked.forEach((booking: any) => {
+      const bookingStart = dayjs(booking.startDate).startOf('day')
+      const bookingEndHour = parseInt(booking.endDate.split(':'), 10)
+      if (current.isSame(bookingStart, 'day')) {
+        disabledHoursArray.push(bookingEndHour)
+      }
     })
+    return disabledHoursArray
   }
+  const onDateChange: RangePickerProps['onChange'] = (dates, dateStrings: any) => {
+    console.log(dateStrings, 'dates,dateStrings')
+    const dateSelect = dateStrings.split(' ')[0]
+    const timeSelect = dateStrings.split(' ')[1]
+    console.log(dateSelect, 'dateSelect')
+    const startDate = dayjs(dateSelect)
+    console.log(startDate, 'startDate')
+    const endDate = dayjs(dateStrings[1])
+    setDateChecking({
+      startDate: dateSelect,
+      endDate: timeSelect
+    })
+    console.log(dateStrings[0], dateStrings[0])
+    const duration = endDate.diff(startDate, 'day') + 1 // +1 để bao gồm cả ngày cuối cùng
+    console.log(duration, 'number of days')
+    setDateCheck(duration)
+    const newValue = duration
+    const previousValue = timBooking
 
-  const onDateChange: RangePickerProps['onChange'] = (dates, dateStrings) => {
-    if (dates && dates[0] && dates[1]) {
-      const startDate = dayjs(dateStrings[0])
-      const endDate = dayjs(dateStrings[1])
-      setDateChecking({
-        startDate: dateStrings[0],
-        endDate: dateStrings[1]
-      })
-      console.log(dateStrings[0], dateStrings[0])
-      const duration = endDate.diff(startDate, 'day') + 1 // +1 để bao gồm cả ngày cuối cùng
-      console.log(duration, 'number of days')
-      setDateCheck(duration)
-      const newValue = duration
-      const previousValue = timBooking
-      setTimBooking(newValue)
-      const priceChange = Number(newValue) - Number(previousValue)
-      setPrice((prevPrice) => prevPrice + priceChange * product.timBooking)
-    }
   }
 
   if (!product) return null
@@ -379,11 +376,15 @@ const PopupDetailProduct = ({ showPopup, togglePopup, product, dateBooked }: Pop
               <div className='custom-topping  mt-4'>
                 <div className='left text-base font-semibold px-5 '>
                   <p>Thời gian đi</p>
-                  <DatePicker.RangePicker className='mt-2' onChange={onDateChange} disabledDate={disabledDate} />
+                  {/* <DatePicker.RangePicker className='mt-2' onChange={onDateChange} disabledDate={disabledDate} /> */}
                   <DatePicker
                     className='mt-2'
                     onChange={onDateChange}
-                    disabledDate={disabledDate}
+                    disabledTime={(current) => {
+                      return {
+                        disabledHours: () => getDisabledHours(current)
+                      }
+                    }}
                     showTime={{ format: 'HH', minuteStep: 60 }}
                     format='YYYY-MM-DD HH:mm'
                   />

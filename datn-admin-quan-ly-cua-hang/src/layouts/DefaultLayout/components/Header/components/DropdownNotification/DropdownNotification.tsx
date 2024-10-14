@@ -103,10 +103,7 @@ const DropdownNotification = () => {
                   to={`/manager/orders`}
                 >
                   <p className='text-sm'>
-                    <span className='dark:text-white text-black'>
-                      {/* Đơn hàng "{item._id}" vừa được tạo bởi khách hàng "{item?.user?.username}" và đang chờ xác nhận. */}
-                      {item?.content}
-                    </span>
+                    <span className='dark:text-white text-black'>{item?.content}</span>
                   </p>
                   <p className='text-xs'>{formatDate(item.createdAt)}</p>
                 </Link>

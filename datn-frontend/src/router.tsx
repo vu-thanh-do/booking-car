@@ -24,7 +24,6 @@ import Signup from './pages/Sign-up/Signup'
 import { createBrowserRouter } from 'react-router-dom'
 import FeedBack from './pages/FeedBack'
 import GetPoint from './pages/GetPoint'
-
 const routes = createBrowserRouter([
   {
     path: '/',
@@ -77,19 +76,6 @@ const routes = createBrowserRouter([
     path: 'blogs',
     element: <LayoutBlog />,
     children: [
-      // {
-      //   index: true,
-      //   path: 'tin-tuc-khuyen-mai',
-      //   element: <News />
-      // },
-      // {
-      //   path: 'cau-chuyen-thuong-hieu',
-      //   element: <BrandStory />
-      // },
-      // {
-      //   path: 'su-kien',
-      //   element: <Events />
-      // },
       {
         path: ':id',
         element: <BlogDetail />
@@ -113,7 +99,6 @@ const routes = createBrowserRouter([
       { path: 'getPoint', element: <GetPoint /> },
     ]
   },
-
   {
     path: '*',
     element: <NotFound />
@@ -126,7 +111,6 @@ const routes = createBrowserRouter([
     path: '/bot',
     element: <Bot />
   }
-  
 ])
 
 export default routes

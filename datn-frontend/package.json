@@ -24,6 +24,7 @@
     "apexcharts": "^3.41.1",
     "axios": "^1.4.0",
     "clsx": "^2.0.0",
+    "datn-frontend": "file:",
     "dayjs": "^1.11.9",
     "flatpickr": "^4.6.13",
     "flowbite": "^1.6.6",

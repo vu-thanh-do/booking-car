@@ -85,7 +85,7 @@ const Header = () => {
       </form>
       {user?.avatar ? (
         <div className='info_notifi flex items-center gap-x-5'>
-          <Tooltip title='Thông báo' arrow={false} zIndex={11}>
+          {/* <Tooltip title='Thông báo' arrow={false} zIndex={11}>
             <Popover
               // onOpenChange={() => notification.length > 0 && setNotification([])}
               className='notification cursor-pointer'
@@ -137,7 +137,7 @@ const Header = () => {
                 <FaBell className='text-xl' />
               </div>
             </Popover>
-          </Tooltip>
+          </Tooltip> */}
           <Tooltip title='Tài khoản' arrow={false}>
             <Link to='/account-layout'>
               <img className='w-12 md:w-9 md:h-9 rounded-full mr-[8px] object-cover ' src={user?.avatar} alt='' />

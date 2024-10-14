@@ -41,7 +41,9 @@ const MyOrder = () => {
 
   const { user } = useAppSelector((state: RootState) => state.persistedReducer.auth)
   const [orderUser, setOrderUser] = useState<any>([])
-  const tabs = ['Chờ xác nhận', 'Đã xác nhận', 'Hoàn thành', 'Đã hủy']
+  // const tabs = ['Chờ xác nhận', 'Đã xác nhận', 'Hoàn thành', 'Đã hủy']
+  const tabs = ['Chưa thanh toán', 'Đã thanh toán']
+
   const [cancelOrder] = useCanceledOrderMutation()
   const reasonChange = (e: CheckboxChangeEvent) => {
     setReason(e.target.value)
@@ -306,8 +308,8 @@ const MyOrder = () => {
                           <strong>Lý do hủy: </strong> {order?.reasonCancelOrder}
                         </>
                       )}
-                      {order.status === 'pending' && 'Đơn hàng đang chờ được xác nhận'}
-                      {order.status === 'confirmed' && 'Đơn hàng đã xác nhận'}
+                      {order.status === 'pending' && 'Chưa thanh toán'}
+                      {order.status === 'confirmed' && 'Đã thanh toán'}
                       {order.status === 'done' && ' Đơn hàng đã hoàn thành'}
                     </span>
                   </div>
@@ -344,7 +346,7 @@ const MyOrder = () => {
                     >
                       Chi tiết đơn hàng
                     </Button>
-                    <Button
+                    {/* <Button
                       onClick={() => {
                         setIdOrder(order._id)
                         showModal()
@@ -357,7 +359,7 @@ const MyOrder = () => {
                       }`}
                     >
                       Hủy đơn hàng
-                    </Button>
+                    </Button> */}
                   </div>
                 </div>
               </div>

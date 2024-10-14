@@ -19,7 +19,7 @@ export const cartController = {
   createCart: async (req, res) => {
     try {
       const { _id } = req.user;
-
+      console.log(req.body.items,'req.body.items')
       const cart = await Cart.findOne({ user: _id, name: req.body.name }).populate([
         {
           path: 'items.toppings',
@@ -107,7 +107,7 @@ export const cartController = {
     } catch (err) {
       return res.status(500).json({
         message: 'fail',
-        err: 'Server error',
+        err: err?.message,
       });
     }
   },

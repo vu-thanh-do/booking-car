@@ -203,7 +203,7 @@ const ListOrders = () => {
       }
     },
     {
-      title: 'Thời gian đặt phòng',
+      title: 'Thời gian đặt  vé',
       dataIndex: 'timeOrder',
       key: 'timeOrder',
       sorter: (a, b) => a.timeOrder.localeCompare(b.timeOrder),

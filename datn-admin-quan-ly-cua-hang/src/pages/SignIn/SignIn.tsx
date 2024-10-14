@@ -26,7 +26,7 @@ export default function SignIn() {
         const dataUser = data.data.user.role
 
         dataUser == 'admin'
-          ? (navigate('/dashboard'), toast.success('Đăng nhập thành công'))
+          ? (navigate('/manager/orders'), toast.success('Đăng nhập thành công'))
           : dataUser == 'staff'
           ? (navigate('/manager/orders'), toast.success('Đăng nhập thành công'))
           : toast.error('Bạn không có quyền truy cập')

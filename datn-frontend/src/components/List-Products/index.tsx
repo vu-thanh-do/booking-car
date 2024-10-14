@@ -60,7 +60,7 @@ const ListProducts = ({ products, isLoading, queryConfig }: ListProductsProps) =
 
       setProduct(data.data)
       setDateBooked(data.dataBooked)
-      console.log(data.dataBooked,'ccccccccc')
+      console.log(data.dataBooked, 'ccccccccc')
       setIsShowPopup(true)
     } catch (error) {
       console.log((error as AxiosError).message)
@@ -176,7 +176,12 @@ const ListProducts = ({ products, isLoading, queryConfig }: ListProductsProps) =
         </div>
       </div>
       {product && Object.keys(product).length > 0 && (
-        <PopupDetailProduct showPopup={isShowPopup} togglePopup={handleTogglePopup} product={product as IProduct} dateBooked={dateBooked}/>
+        <PopupDetailProduct
+          showPopup={isShowPopup}
+          togglePopup={handleTogglePopup}
+          product={product as IProduct}
+          dateBooked={dateBooked}
+        />
       )}
     </>
   )

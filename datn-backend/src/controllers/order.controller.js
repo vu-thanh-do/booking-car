@@ -81,21 +81,6 @@ export const orderController = {
         is_active: true,
         isPayment: ['vnpay', 'stripe'].includes(body.paymentMethodId) ? true : false,
       });
-
-      const dataEmail = {
-        items,
-        statusOrder: 'Chờ xác nhận',
-        orderId: order._id,
-        payment: body.paymentMethodId,
-        createdAt: moment(new Date()).format(' HH:mm:ss ĐD-MM-YYYY'),
-        userInfo: body.inforOrderShipping,
-        priceShipping: body.priceShipping,
-        total: totalAll,
-        to: body.inforOrderShipping.email,
-        text: 'Hi!',
-        subject: 'cảm ơn bạn đã đặt hàng tại Trà sữa Connect',
-      };
-
       // await sendEmailOrder(dataEmail);
       const cart = await Cart.deleteMany({
         user: order.user,
@@ -107,7 +92,12 @@ export const orderController = {
           data: cart,
         });
       }
-
+      // await dateOrder.create({
+      //   endDate: body.endDate,
+      //   startDate: body.startDate,
+      //   idRoom: body.idRoom,
+      //   iduser:  body.idUser,
+      // });
       const url = `${Enviroment()}/products/checkout/payment-result?encode=${encodeStripe}`;
 
       return res.status(200).json({
@@ -197,82 +187,13 @@ export const orderController = {
       },
       { path: 'items.product' },
     ]);
-    if (status != 'pending' && status != 'canceled') {
-      await dateOrder.create({
-        startDate: dataOder.startDate,
-        endDate: dataOder.endDate,
-        idRoom: dataOder.items[0].product,
-        iduser: dataOder.user,
-      });
-    }
-    const dataEmail = {
-      to: updateState.inforOrderShipping.email,
-      text: 'Hi!',
-      subject: 'cảm ơn bạn đã đặt hàng tại Trà sữa Connect',
-      html: `
-          <style>
-           
-            .container {
-              max-width: 600px;
-              margin: 0 auto;
-              padding: 20px;
-              background-color: #f5f5f5;
-            }
-        
-            h1 {
-              color: #333;
-              font-size: 24px;
-              margin-bottom: 20px;
-            }
-        
-            p {
-              color: #666;
-              font-size: 16px;
-            }
-        
-            .order-status {
-              font-weight: bold;
-              margin-top: 10px;
-            }
-        
-            .footer {
-              margin-top: 20px;
-              text-align: center;
-            }
-          </style>
-       
-          <div class="container">
-            <h1>Thông báo trạng thái đơn hàng</h1>
-            <div class="receipt-right">
-            <h3><b>Dear ${updateState?.inforOrderShipping?.name} </b></h3>
-
-            <p><b>Số Điện thoại :</b> ${updateState?.inforOrderShipping?.phone}</p>
-            <p><b>Thời gian :</b> ${moment(new Date()).format(' HH:mm:ss ĐD-MM-YYYY')}</p>
-            <p><b>Hình thức thanh toán:</b> ${
-              updateState.paymentMethodId == 'vnpay' ? 'VNPAY' : 'Thanh toán tiền mặt'
-            }</p>
-            <p><b>Id đơn hàng:</b> ${updateState._id}</p>
-            
-            <p><b>Địa chỉ :</b>${updateState?.inforOrderShipping?.address}</p>
-          </div>
-            
-            <div class="order-status"> Đơn hàng của bạn đã được cập nhật với trạng thái: <b>${
-              status == 'confirmed'
-                ? 'Đã xác nhận'
-                : status == 'done'
-                ? 'Đã hoàn thành'
-                : 'Đơn đã hủy'
-            }</b></div>
-            <div class="footer">
-              <p>Cảm ơn bạn rất nhiều 💕💕💕!</p>
-              <p>Đội ngũ hỗ trợ khách hàng</p>
-            </div>
-          </div>
-       `,
-    };
-
-    // await sendEmailOrder(dataEmail);
-
+    await dateOrder.create({
+      startDate: dataOder.startDate,
+      endDate: dataOder.endDate,
+      idRoom: dataOder.items[0].product,
+      iduser: dataOder.user,
+      chair : dataOder.items[0].size.name
+    });
     return updateState;
   },
 

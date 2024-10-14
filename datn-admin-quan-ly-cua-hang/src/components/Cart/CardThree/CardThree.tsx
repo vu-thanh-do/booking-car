@@ -142,7 +142,7 @@ const CardThree = ({ data, data2 }: CardThreeProps) => {
         ClientSocket.sendNotification({
           idUser,
           idOrder,
-          content: `Đơn đặt phòng "${idOrder.toUpperCase()}" đã được xác nhận`
+          content: `Đơn đặt vé "${idOrder.toUpperCase()}" đã được xác nhận`
         })
       })
       .catch(() => messageAlert('Thay đổi trạng thái thất bại', 'error'))
@@ -190,7 +190,7 @@ const CardThree = ({ data, data2 }: CardThreeProps) => {
             ClientSocket.sendNotification({
               idUser: order.user._id,
               idOrder: selectItem as string,
-              content: `Đơn đặt phòng "${(selectItem as string).toUpperCase()}" đã được xác nhận`
+              content: `Đơn đặt vé "${(selectItem as string).toUpperCase()}" đã được xác nhận`
             })
           }
         })
@@ -220,7 +220,7 @@ const CardThree = ({ data, data2 }: CardThreeProps) => {
       <div style={{ padding: 8 }} onKeyDown={(e) => e.stopPropagation()}>
         <Input
           ref={searchInput}
-          placeholder={`Tìm kiếm mã Đơn đặt phòng`}
+          placeholder={`Tìm kiếm mã Đơn đặt vé`}
           value={selectedKeys[0]}
           onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
           onPressEnter={() => handleSearch(selectedKeys as string[], confirm, dataIndex)}
@@ -294,7 +294,7 @@ const CardThree = ({ data, data2 }: CardThreeProps) => {
       render: (user: any) => <UserInfoRow user={user} />
     },
     {
-      title: 'Ảnh Phòng',
+      title: 'Ảnh vé',
       dataIndex: 'products',
       key: 'products',
       width: 100,
@@ -355,7 +355,7 @@ const CardThree = ({ data, data2 }: CardThreeProps) => {
       render: (_: any, order) => (
         <div className='flex items-center justify-center'>
           <Space>
-            <TooltipAntd title='Xem chi tiết Đơn đặt phòng'>
+            <TooltipAntd title='Xem chi tiết Đơn đặt vé'>
               <ButtonAnt
                 size='large'
                 className='bg-meta-6 hover:!text-white flex items-center justify-center text-white'
@@ -367,7 +367,7 @@ const CardThree = ({ data, data2 }: CardThreeProps) => {
                 }}
               />
             </TooltipAntd>
-            <TooltipAntd title='Xác nhận Đơn đặt phòng'>
+            <TooltipAntd title='Xác nhận Đơn đặt vé'>
               <ButtonAnt
                 size='large'
                 className='bg-meta-5 hover:!text-white flex items-center justify-center text-white'
@@ -379,10 +379,10 @@ const CardThree = ({ data, data2 }: CardThreeProps) => {
               />
             </TooltipAntd>
 
-            <TooltipAntd title='Hủy Đơn đặt phòng'>
+            <TooltipAntd title='Hủy Đơn đặt vé'>
               {order && !order.user_order ? (
                 <Popconfirm
-                  title='Bạn muốn hủy Đơn đặt phòng này chứ ?'
+                  title='Bạn muốn hủy Đơn đặt vé này chứ ?'
                   onConfirm={() => dispatch(setIdOrderCancel(order.key))}
                   okText='Đồng ý'
                   cancelText='Hủy'
@@ -437,7 +437,7 @@ const CardThree = ({ data, data2 }: CardThreeProps) => {
         <div className='mt-4'>
           <div>
             <h4 className='text-title-md font-bold text-black dark:text-white'>{data.countOrderStatus[0].value}</h4>
-            <span className='text-sm font-medium'>Đơn đặt phòng chờ xác nhận</span>
+            <span className='text-sm font-medium'>Đơn đặt vé chờ xác nhận</span>
           </div>
 
           <span className='hidden grid-cols-[9fr,1fr] text-right mt-2 items-center gap-1 text-sm font-medium text-meta-3'>
@@ -460,7 +460,7 @@ const CardThree = ({ data, data2 }: CardThreeProps) => {
       </div>
 
       <Drawer
-        title='Thống kê Đơn đặt phòng'
+        title='Thống kê Đơn đặt vé'
         open={isModalOpen}
         placement='right'
         width={1200}
@@ -538,11 +538,11 @@ const CardThree = ({ data, data2 }: CardThreeProps) => {
             />
           </div>
           <h3 className='text-xl font-semibold text-black dark:text-white mb-4 flex justify-between items-center'>
-            Các Đơn đặt phòng cần xác nhận
+            Các Đơn đặt vé cần xác nhận
             {hasSelected && (
               <Space>
                 <Popconfirm
-                  title='Bạn muốn xác nhận tất cả Đơn đặt phòng này?'
+                  title='Bạn muốn xác nhận tất cả Đơn đặt vé này?'
                   onConfirm={onConfirmOrderMany}
                   onCancel={() => setSelectedRowKeys([])}
                 >
@@ -605,9 +605,9 @@ const CardThree = ({ data, data2 }: CardThreeProps) => {
               onChange={handleChangeAnalyticMonth}
               options={[
                 { value: 'pending', label: 'Chờ xác nhận' },
-                { value: 'confirmed', label: 'Xác nhận Đơn đặt phòng' },
-                { value: 'done', label: 'Hoàn thành Đơn đặt phòng' },
-                { value: 'canceled', label: 'Hủy Đơn đặt phòng' }
+                { value: 'confirmed', label: 'Xác nhận Đơn đặt vé' },
+                { value: 'done', label: 'Hoàn thành Đơn đặt vé' },
+                { value: 'canceled', label: 'Hủy Đơn đặt vé' }
               ]}
             />
           </div>
