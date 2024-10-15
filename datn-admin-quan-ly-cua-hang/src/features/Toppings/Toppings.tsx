@@ -26,7 +26,7 @@ const ToppingFeature = ({ data }: ToppingFeatureProps) => {
 
   return (
     <div>
-      <Breadcrumb pageName='Dịch vụ'>
+      <Breadcrumb pageName='Khung giờ'>
         {user && user.role === IRoleUser.ADMIN && (
           <Button icon={<PlusIcon />} onClick={() => dispatch(setOpenDrawer(true))}>
             Thêm

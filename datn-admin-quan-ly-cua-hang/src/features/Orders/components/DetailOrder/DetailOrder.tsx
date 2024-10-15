@@ -94,8 +94,8 @@ const DetailOrder = ({ open }: DetailOrderProps) => {
     },
     {
       title: 'Giá',
-      dataIndex: 'price',
-      key: 'price',
+      dataIndex: 'priceV2',
+      key: 'priceV2',
       render: (price: number) => <span className='font-semibold text-base'>{formatCurrency(price)}</span>
     }
   ]
@@ -104,9 +104,10 @@ const DetailOrder = ({ open }: DetailOrderProps) => {
     index: index + 1,
     productName: item.product?.name,
     quantity: item.product?.quantity,
+    priceV2: Number(item?.price || 0) + Number(item?.kindOfRoom?.[0]?.price || 0),
     ...item
   }))
-
+  console.log(orderProducts, 'orderProducts')
   const footerContent = () => {
     return (
       <Row gutter={[16, 16]}>
@@ -135,12 +136,16 @@ const DetailOrder = ({ open }: DetailOrderProps) => {
           <span className='text-base'>Tổng tiền: </span>
         </Col>
         <Col span={12}>
-          <span className='text-right block text-xl  font-bold'>{formatCurrency(orderData.totalPrice)}</span>
+          <span className='text-right block text-xl  font-bold'>
+            {formatCurrency(
+              Number(orderData.totalPrice) -
+                Number((orderData?.moneyPromotion && orderData?.moneyPromotion?.price) || 0)
+            )}
+          </span>
         </Col>
       </Row>
     )
   }
-
   return (
     <Drawer
       title={<h1 className='text-2xl'>Chi tiết vé</h1>}
@@ -160,7 +165,7 @@ const DetailOrder = ({ open }: DetailOrderProps) => {
           >
             Hoàn thành
           </Button> */}
-          
+
           <Button
             styleClass={
               orderData.status === 'confirmed' || orderData.status === 'done' || orderData.status === 'canceled'

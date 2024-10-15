@@ -27,13 +27,19 @@ const ListProducts = ({ products, isLoading, queryConfig }: ListProductsProps) =
   const [productList, setProductList] = useState<IProductDocs | null>(null)
   const [product, setProduct] = useState<IProduct | object>({})
   const [dateBooked, setDateBooked] = useState<any[]>([])
+  const [timeOn, setTimeOn] = useState<any[]>([])
 
+  const [checkOnDate, setCheckOnDate] = useState(false)
   const { idCate } = useAppSelector((state) => state.persistedReducer.category)
-
   const { state } = useLocation()
   const navigate = useNavigate()
+  console.log(isShowPopup,'isShowPopup')
   const handleTogglePopup = useCallback(() => {
     setIsShowPopup(!isShowPopup)
+    if (isShowPopup == false) {
+
+      setCheckOnDate(false)
+    }
   }, [isShowPopup])
 
   // const paginatePage = (page: number) => {
@@ -60,6 +66,7 @@ const ListProducts = ({ products, isLoading, queryConfig }: ListProductsProps) =
 
       setProduct(data.data)
       setDateBooked(data.dataBooked)
+      setTimeOn(data.timeGo)
       console.log(data.dataBooked, 'ccccccccc')
       setIsShowPopup(true)
     } catch (error) {
@@ -85,7 +92,7 @@ const ListProducts = ({ products, isLoading, queryConfig }: ListProductsProps) =
     if (state && Object.keys(state)?.length > 0) {
       handleTogglePopup()
     }
-  }, [])
+  }, [state])
 
   return (
     <>
@@ -181,6 +188,9 @@ const ListProducts = ({ products, isLoading, queryConfig }: ListProductsProps) =
           togglePopup={handleTogglePopup}
           product={product as IProduct}
           dateBooked={dateBooked}
+          timeOn={timeOn}
+          checkOnDate={checkOnDate}
+          setCheckOnDate={setCheckOnDate}
         />
       )}
     </>

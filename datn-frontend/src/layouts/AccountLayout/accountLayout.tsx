@@ -63,7 +63,7 @@ const AccountLayout = () => {
             <div className="account-avatar absolute -top-[60px] left-[calc(50%-60px)] h-[120px] w-[120px] bg-[#fff] rounded-full border-[5px] border-white">
               <div className="avatar ">
                 <div>
-                  <img className="" src="/logo_icon.png" />
+                  <img className="" src="/bus-bg.jpg" />
                 </div>
                 <div className="image-upload">
                   <label className="btn-change-photo" htmlFor="file-input"></label>

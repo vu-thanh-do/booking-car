@@ -53,7 +53,7 @@ const News = () => {
           >
             <Meta
               className='custom-title  mb-5'
-              avatar={<Avatar src='/logo_icon.png' />}
+              avatar={<Avatar src='/bus-bg.jpg' />}
               title={item.name}
               description={<div className='line-clamp-3 text-base'>{parse(item.description)}</div>}
             />

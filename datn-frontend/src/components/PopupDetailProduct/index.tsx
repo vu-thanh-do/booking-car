@@ -19,18 +19,32 @@ type PopupDetailProductProps = {
   togglePopup: () => void
   product: any
   dateBooked: any
+  checkOnDate: any
+  setCheckOnDate: any
+  timeOn: any
 }
 
-const PopupDetailProduct = ({ showPopup, togglePopup, product, dateBooked }: PopupDetailProductProps) => {
-  console.log(product, 'product')
+const PopupDetailProduct = ({
+  showPopup,
+  togglePopup,
+  product,
+  dateBooked,
+  checkOnDate,
+  setCheckOnDate,
+  timeOn
+}: PopupDetailProductProps) => {
   const dispatch = useAppDispatch()
   /* set state trạng thái */
+  const [selectedRoom, setSelectedRoom] = useState<string | null>(null)
+
   const [price, setPrice] = useState<number>(0)
   const [quantity, setQuantity] = useState<number>(1)
   const [totalToppingPrice, setTotalToppingPrice] = useState<number>(0)
   const [addCartDbFn] = useCreateCartDBMutation()
   const [sizes, setSizes] = useState<{ name: string; price: number }[]>([])
   const [dateCheck, setDateCheck] = useState(0)
+  const [bookedChairs, setBookedChairs] = useState([])
+
   // const [nameRadioInput, setNameRadioInput] = useState<string>(product.sizes[0].name);
   const [nameRadioInput, setNameRadioInput] = useState<{
     name: string
@@ -67,36 +81,51 @@ const PopupDetailProduct = ({ showPopup, togglePopup, product, dateBooked }: Pop
       })
     }
   }
+  // const handleCheckboxChangeRoom = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   const toppingPrice = Number(event.target.value)
+  //   if (event.target.checked) {
+  //     setPrice((pre) => Number(pre) + toppingPrice)
+  //   } else {
+  //     setPrice((pre) => Number(pre) - toppingPrice)
+  //   }
+  //   // if (event.target.checked) {
+  //   //   setTotalToppingPrice((prev) => Number(prev) + toppingPrice)
+  //   //   setPrice((prev) => Number(prev) + toppingPrice - newPrice)
+  //   //   setCheckedkindOfRoom((prev) => [dataRoomBook])
+  //   //   localStorage.setItem('pricec', event.target.value)
+  //   // } else {
+  //   //   setTotalToppingPrice((prev) => Number(prev) - toppingPrice)
+  //   //   setPrice((prev) => Number(prev) - toppingPrice)
+  //   //   localStorage.removeItem('pricec')
+  //   //   setCheckedkindOfRoom((prev) => prev.filter((topping) => topping.name !== toppingName))
+  //   // }
+  // }
   const handleCheckboxChangeRoom = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newToppingPrice = Number(event.target.value)
+    const selectedRoomId = event.target.dataset.items as any
     const toppingPrice = Number(event.target.value)
-    const priceOk = localStorage.getItem('pricec')
     const toppingName = event.target.name
-    if (!priceOk) {
-      localStorage.setItem('pricec', event.target.value)
-    }
-
-    const newPrice = Number(priceOk) || 0
-    console.log(newPrice, 'price')
     const dataRoomBook = { name: toppingName, price: toppingPrice }
     if (event.target.checked) {
-      setTotalToppingPrice((prev) => prev + toppingPrice)
-      setPrice((prev) => prev + toppingPrice - newPrice)
-      console.log(price, 'total topping price')
-      setCheckedkindOfRoom((prev) => [dataRoomBook])
-      localStorage.setItem('pricec', event.target.value)
+      if (selectedRoom) {
+        const oldToppingPrice = product.kindOfRoom.find((room: any) => room.name === selectedRoom)?.price || 0
+        setPrice((pre) => pre - oldToppingPrice + newToppingPrice)
+        setTotalToppingPrice((prev) => Number(prev) - toppingPrice)
+        setCheckedkindOfRoom((prev) => prev.filter((topping) => topping.name !== toppingName))
+      } else {
+        setPrice((pre) => pre + newToppingPrice)
+        setTotalToppingPrice((prev) => Number(prev) + toppingPrice)
+        setCheckedkindOfRoom((prev) => [dataRoomBook])
+      }
+      setSelectedRoom(selectedRoomId)
     } else {
-      console.log('2')
-      setTotalToppingPrice((prev) => prev - toppingPrice)
-      setPrice((prev) => prev - toppingPrice)
-      localStorage.removeItem('pricec')
-      setCheckedkindOfRoom((prev) => {
-        return prev.filter((topping) => topping.name !== toppingName)
-      })
+      setPrice((pre) => pre - newToppingPrice)
+      setSelectedRoom(null)
     }
   }
-  // const handleGetInfoPrd = (data: any) => {
-
-  // }
+  useEffect(() => {
+    console.log(price, 'total topping price')
+  }, [price])
 
   useEffect(() => {
     if (product.sizes) {
@@ -108,12 +137,10 @@ const PopupDetailProduct = ({ showPopup, togglePopup, product, dateBooked }: Pop
     setTotalToppingPrice(0)
     setCheckedToppings([])
     // setNameRadioInput(product.sizes[0].name);
-
     //reset checkbox when popup close
     // const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     // checkboxes.forEach((item: any) => (item.checked = false));
   }, [product])
-
   const handleAddToCart = () => {
     togglePopup()
     const data = {
@@ -154,36 +181,47 @@ const PopupDetailProduct = ({ showPopup, togglePopup, product, dateBooked }: Pop
       endDate: dayjs(booking.endDate)
     }
   })
+
   const getDisabledHours = (current: any) => {
-    const disabledHoursArray: any[] = []
-    dateBooked.forEach((booking: any) => {
-      const bookingStart = dayjs(booking.startDate).startOf('day')
-      const bookingEndHour = parseInt(booking.endDate.split(':'), 10)
-      if (current.isSame(bookingStart, 'day')) {
-        disabledHoursArray.push(bookingEndHour)
-      }
+    let disabledHoursArray: any[] = [
+      0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23
+    ]
+    timeOn.forEach((booking: any) => {
+      const bookingEndHour = parseInt(booking, 10)
+      disabledHoursArray = disabledHoursArray.filter((t) => t != bookingEndHour)
     })
+    console.log(disabledHoursArray, 'disabledHoursArray')
     return disabledHoursArray
   }
-  const onDateChange: RangePickerProps['onChange'] = (dates, dateStrings: any) => {
-    console.log(dateStrings, 'dates,dateStrings')
-    const dateSelect = dateStrings.split(' ')[0]
-    const timeSelect = dateStrings.split(' ')[1]
-    console.log(dateSelect, 'dateSelect')
-    const startDate = dayjs(dateSelect)
-    console.log(startDate, 'startDate')
-    const endDate = dayjs(dateStrings[1])
-    setDateChecking({
-      startDate: dateSelect,
-      endDate: timeSelect
-    })
-    console.log(dateStrings[0], dateStrings[0])
-    const duration = endDate.diff(startDate, 'day') + 1 // +1 để bao gồm cả ngày cuối cùng
-    console.log(duration, 'number of days')
-    setDateCheck(duration)
-    const newValue = duration
-    const previousValue = timBooking
 
+  const onDateChange: RangePickerProps['onChange'] = (date: dayjs.Dayjs | null, dateString: string) => {
+    try {
+      // Kiểm tra nếu người dùng chưa chọn ngày hoặc giờ
+      if (!date) {
+        console.warn('Ngày hoặc giờ chưa được chọn')
+        return
+      }
+      const selectedDate = date.startOf('day') // Lấy ngày đã chọn (không có giờ)
+      const selectedHour = date.hour() // Lấy giờ đã chọn từ đối tượng dayjs
+      setDateChecking({
+        startDate: dateString.split(' ')[0], // Lấy chuỗi ngày
+        endDate: dateString.split(' ')[1] // Lấy chuỗi giờ
+      })
+      const filteredChairs = dateBooked
+        .filter((booking: any) => {
+          const bookingDate = dayjs(booking.startDate).startOf('day') // Ngày của booking
+          const bookingHour = parseInt(booking.endDate.split(':')[0], 10) // Giờ của booking
+
+          // So sánh ngày và giờ
+          return selectedDate.isSame(bookingDate) && selectedHour === bookingHour
+        })
+        .map((booking: any) => booking.chair) // Lọc ghế đã được đặt
+
+      setBookedChairs(filteredChairs) // Cập nhật ghế đã được đặt
+      setCheckOnDate(true)
+    } catch (error) {
+      console.error('Lỗi khi xử lý chọn ngày và giờ:', error)
+    }
   }
 
   if (!product) return null
@@ -199,6 +237,7 @@ const PopupDetailProduct = ({ showPopup, togglePopup, product, dateBooked }: Pop
           onClick={() => {
             togglePopup()
             setDateCheck(0)
+            setCheckOnDate(false)
           }}
           className='close-btn absolute top-2 right-2 cursor-pointer z-[6]'
         >
@@ -279,67 +318,76 @@ const PopupDetailProduct = ({ showPopup, togglePopup, product, dateBooked }: Pop
               </div>
             </div>
             <div className={`customize h-1/2 overflow-y-scroll p-5 grow mb-5 ${styles.popup_body}`}>
-              <div className='custom-size mb-2'>
-                <div className='title flex items-center justify-between px-5 mb-2'>
-                  <div className='left text-base font-semibold'>Chọn ghế</div>
-                  <div className='right'>
-                    <FaAngleDown />
+              {/* setCheckOnDate(true) */}
+              {checkOnDate && (
+                <>
+                  <div className='custom-size mb-2'>
+                    <div className='title flex items-center justify-between px-5 mb-2'>
+                      <div className='left text-base font-semibold'>Chọn ghế</div>
+                      <div className='right'>
+                        <FaAngleDown />
+                      </div>
+                    </div>
+                    <div className='custom-content flex px-5 bg-white flex-wrap shadow-[0px_0px_12px_0px_rgba(0,0,0,.05)] rounded'>
+                      {product &&
+                        product.sizes &&
+                        sizes.map((item) => {
+                          return (
+                            <label
+                              onChange={() => {
+                                setPrice(Number(item.price) + Number(totalToppingPrice))
+                                setNameRadioInput(item)
+                              }}
+                              key={uuidv4()}
+                              className={`${styles.container_radio} block w-full group`}
+                            >
+                              <span className='block'>Ghế {item.name}</span>
+                              <input
+                                className='absolute opacity-0'
+                                defaultChecked={nameRadioInput?.name?.trim() == item?.name?.trim() ? true : false}
+                                type='radio'
+                                name='size'
+                                value={item.price}
+                                disabled={bookedChairs.includes(item?.name) ? true : false}
+                              />
+                              <span className={`${styles.checkmark_radio} group-hover:bg-[#ccc]`}></span>
+                              <span
+                                className={`${!bookedChairs.includes(item?.name) ? 'text-black font-bold' : 'text-red-500 font-bold'}`}
+                              >
+                                {bookedChairs.includes(item?.name) ? 'Hết ghế' : 'Còn trống'}
+                              </span>
+                            </label>
+                          )
+                        })}
+                    </div>
                   </div>
-                </div>
-                <div className='custom-content flex px-5 bg-white flex-wrap shadow-[0px_0px_12px_0px_rgba(0,0,0,.05)] rounded'>
-                  {product &&
-                    product.sizes &&
-                    sizes.map((item) => {
-                      return (
-                        <label
-                          onChange={() => {
-                            setPrice(item.price + totalToppingPrice)
-                            setNameRadioInput(item)
-                          }}
-                          key={uuidv4()}
-                          className={`${styles.container_radio} block w-full group`}
-                        >
-                          <span className='block'>Ghế {item.name}</span>
-                          <input
-                            className='absolute opacity-0'
-                            defaultChecked={nameRadioInput?.price === item.price ? true : false}
-                            type='radio'
-                            name='size'
-                            value={item.price}
-                          />
-                          <span className={`${styles.checkmark_radio} group-hover:bg-[#ccc]`}></span>
-                        </label>
-                      )
-                    })}
-                </div>
-              </div>
-
-              <div className='custom-topping'>
-                <div className='custom-content flex px-5 bg-white flex-wrap shadow-[0px_0px_12px_0_rgba(0,0,0,.05)] rounded'>
-                  {product &&
-                    product.toppings.map((item: any) => {
-                      return (
-                        <div key={item._id} className='topping-wrap flex items-center justify-between w-full'>
-                          <label className={`${styles.container_checkbox} group block w-full`}>
-                            <span className='text-sm capitalize'>{item.name}</span>
-                            <input
-                              onChange={(e) => handleCheckboxChange(e)}
-                              className='absolute w-0 h-0 opacity-0'
-                              type='checkbox'
-                              name={item.name}
-                              value={item.price}
-                              data-items={item._id}
-                              checked={checkedToppings.find((topping) => topping.name === item.name) ? true : false}
-                            />
-                            <span className={`${styles.checkmark_checkbox} group-hover:bg-[#ccc]`}></span>
-                          </label>
-
-                          <span className='topping-price text-sm'>{formatCurrency(item.price)}</span>
-                        </div>
-                      )
-                    })}
-                </div>
-              </div>
+                  <div className='custom-topping'>
+                    <div className='custom-content flex px-5 bg-white flex-wrap shadow-[0px_0px_12px_0_rgba(0,0,0,.05)] rounded'>
+                      {product &&
+                        product.toppings.map((item: any) => {
+                          return (
+                            <div key={item._id} className='topping-wrap flex items-center justify-between w-full'>
+                              <label className={`${styles.container_checkbox} group block w-full`}>
+                                <span className='text-sm capitalize'>{item.name}</span>
+                                <input
+                                  onChange={(e) => handleCheckboxChange(e)}
+                                  className='absolute w-0 h-0 opacity-0'
+                                  type='checkbox'
+                                  name={item.name}
+                                  value={item.price}
+                                  data-items={item._id}
+                                  checked={checkedToppings.find((topping) => topping.name === item.name) ? true : false}
+                                />
+                                <span className={`${styles.checkmark_checkbox} group-hover:bg-[#ccc]`}></span>
+                              </label>
+                              <span className='topping-price text-sm'>{formatCurrency(item.price)}</span>
+                            </div>
+                          )
+                        })}
+                    </div>
+                  </div>
+                </>
+              )}
               <div className='custom-topping'>
                 <div className='title flex items-center justify-between px-5 mb-2'>
                   <div className='left text-base font-semibold'>Chọn loại Xe</div>
@@ -350,6 +398,7 @@ const PopupDetailProduct = ({ showPopup, togglePopup, product, dateBooked }: Pop
                 <div className='custom-content flex px-5 bg-white flex-wrap shadow-[0px_0px_12px_0_rgba(0,0,0,.05)] rounded'>
                   {product &&
                     product.kindOfRoom.map((item: any, index: number) => {
+                      console.log(item, 'itemitem')
                       return (
                         <div key={index} className='topping-wrap flex items-center justify-between w-full'>
                           <label className={`${styles.container_checkbox} group block w-full`}>
@@ -360,8 +409,8 @@ const PopupDetailProduct = ({ showPopup, togglePopup, product, dateBooked }: Pop
                               type='checkbox'
                               name={item.name}
                               value={item.price}
-                              data-items={item._id}
-                              checked={checkedkindOfRoom.find((topping) => topping.name === item.name) ? true : false}
+                              data-items={item.name}
+                              checked={selectedRoom === item.name} // Chỉ chọn phòng nào có id trùng với selectedRoom
                             />
                             <span className={`${styles.checkmark_checkbox} group-hover:bg-[#ccc]`}></span>
                           </label>

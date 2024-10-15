@@ -352,7 +352,7 @@ const ListPendingOrders = () => {
     priceShip: item.priceShipping,
     quantity: item.items.length,
     products: item.items,
-    totalPrice: item.total,
+    totalPrice: Number(item?.items?.[0]?.price || 0) + Number(item?.items?.[0]?.kindOfRoom?.[0]?.price || 0),
     status: item.status,
     moneyPromotion: item.moneyPromotion,
     timeOrder: item.createdAt,

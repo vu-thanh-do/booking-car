@@ -217,14 +217,14 @@ const FormProduct = () => {
             </Form.Item>
           </Col>
         </Row>
-        {/* <Row gutter={16}>
+        <Row gutter={16}>
           <Col span={12}>
             <Form.Item
               name='toppings'
-              label='Lựa chọn Dịch vụ'
-              rules={[{ required: true, message: 'Dịch vụ là bắt buộc' }]}
+              label='Chọn khung giờ'
+              rules={[{ required: true, message: 'Khung giờ là bắt buộc' }]}
             >
-              <Select size='large' mode='multiple' allowClear placeholder='Lựa chọn Dịch vụ'>
+              <Select size='large' mode='multiple' allowClear placeholder='Lựa chọn Khung giờ'>
                 {toppings.map((topping) => (
                   <Select.Option value={topping._id} key={topping._id}>
                     <span className='capitalize'>{topping.name}</span>
@@ -245,7 +245,7 @@ const FormProduct = () => {
               </Select>
             </Form.Item>
           </Col>
-        </Row> */}
+        </Row>
         <Row gutter={16}>
           <Col span={12}>
             <Form.Item className='w-full' label='Ghế Xe'>

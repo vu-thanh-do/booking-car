@@ -86,14 +86,14 @@ export const ProductController = {
         $addToSet: { products: product._id },
       });
       /* update topping */
-      // const { toppings } = body;
-      // if (toppings.length > 0) {
-      //   for (let i = 0; i < toppings.length; i++) {
-      //     await Topping.findByIdAndUpdate(toppings[i], {
-      //       $addToSet: { products: product._id },
-      //     });
-      //   }
-      // }
+      const { toppings } = body;
+      if (toppings.length > 0) {
+        for (let i = 0; i < toppings.length; i++) {
+          await Topping.findByIdAndUpdate(toppings[i], {
+            $addToSet: { products: product._id },
+          });
+        }
+      }
       /* update size */
       const { sizes } = productData;
       if (sizes.length > 0) {
@@ -177,10 +177,16 @@ export const ProductController = {
         { path: 'toppings', select: '-products' },
       ]);
       const dataDate = await dateOrder.find({ idRoom: req.params.id });
+      const getTimeGo = []
+      for(const timeG of product.toppings){
+        if(timeG.name){
+          getTimeGo.push(timeG.name)
+        }
+      }
       if (!product) {
         return res.status(404).json({ message: 'fail', err: 'Not found Product' });
       }
-      return res.status(200).json({ message: 'success', data: product, dataBooked: dataDate });
+      return res.status(200).json({ message: 'success', data: product, dataBooked: dataDate , timeGo : getTimeGo });
     } catch (error) {
       next(error);
     }
@@ -343,7 +349,6 @@ export const ProductController = {
   //     next(error);
   //   }
   // },
-
   /* xóa cứng */
   deleteRealProduct: async (req, res, next) => {
     try {

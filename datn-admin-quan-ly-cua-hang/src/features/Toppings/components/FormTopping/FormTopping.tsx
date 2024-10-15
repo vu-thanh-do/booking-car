@@ -28,7 +28,7 @@ export const ToppingAdd = ({ open }: ToppingAddProps) => {
       if (toppingId) {
         await updateTopping({ _id: toppingId, ...values }).then(() => {
           dispatch(setToppingId(null))
-          toast.success('Cập nhật topping thành công!')
+          toast.success('Cập nhật giờ thành công!')
           dispatch(setOpenDrawer(false))
         })
         return
@@ -36,11 +36,11 @@ export const ToppingAdd = ({ open }: ToppingAddProps) => {
 
       /* nếu không có id topping sẽ add */
       await toppingAdd(values).then(() => {
-        toast.success('Thêm topping thành công!')
+        toast.success('Thêm giờ thành công!')
         dispatch(setOpenDrawer(false))
       })
     } catch (error) {
-      toast.error('Thêm topping thất bại!')
+      toast.error('Thêm giờ thất bại!')
     }
   }
 
@@ -67,7 +67,7 @@ export const ToppingAdd = ({ open }: ToppingAddProps) => {
   return (
     <Drawer
       className='dark:!text-white dark:bg-black'
-      title={toppingId ? 'Cập nhật topping' : 'Thêm topping mới'}
+      title={toppingId ? 'Cập nhật giờ' : 'Thêm giờ mới'}
       width={340}
       onClose={() => {
         dispatch(setOpenDrawer(false))
@@ -86,24 +86,24 @@ export const ToppingAdd = ({ open }: ToppingAddProps) => {
       >
         <Form.Item
           className='dark:text-white'
-          label='Tên Dịch vụ'
+          label='Tên giờ'
           name='name'
           rules={[
-            { required: true, message: 'Tên Dịch vụ không được bỏ trống!' },
+            { required: true, message: 'Tên giờ không được bỏ trống!' },
             {
               validator: (_, value) => {
                 if (value.trim() === '') {
-                  return Promise.reject('Tên Dịch vụ không được chứa toàn khoảng trắng!')
+                  return Promise.reject('Tên giờ không được chứa toàn khoảng trắng!')
                 }
                 return Promise.resolve()
               }
             }
           ]}
         >
-          <Input size='large' placeholder='Tên Dịch vụ' />
+          <Input size='large' placeholder='Tên giờ' />
         </Form.Item>
 
-        <Form.Item
+        {/* <Form.Item
           className='dark:text-white'
           label='Giá Dịch vụ'
           name='price'
@@ -126,11 +126,11 @@ export const ToppingAdd = ({ open }: ToppingAddProps) => {
             placeholder='Giá  Dịch vụ'
             className='w-full'
           />
-        </Form.Item>
+        </Form.Item> */}
 
         <Form.Item>
           <Button styleClass='!w-full mt-5 py-2' type='submit'>
-            {toppingId ? 'Cập nhật  Dịch vụ' : 'Thêm  Dịch vụ'}
+            {toppingId ? 'Cập nhật  giờ' : 'Thêm  giờ'}
           </Button>
         </Form.Item>
       </Form>

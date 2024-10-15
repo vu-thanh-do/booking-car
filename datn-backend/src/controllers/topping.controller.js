@@ -4,12 +4,12 @@ import toppingValidate from '../validates/topping.validate.js';
 export const toppingController = {
   createTopping: async (req, res, next) => {
     try {
-      const { error } = toppingValidate.validate(req.body, { abortEarly: false });
-      if (error) {
-        return res
-          .status(400)
-          .json({ message: 'fail', err: error.details.map((err) => err.message) });
-      }
+      // const { error } = toppingValidate.validate(req.body, { abortEarly: false });
+      // if (error) {
+      //   return res
+      //     .status(400)
+      //     .json({ message: 'fail', err: error.details.map((err) => err.message) });
+      // }
       const topping = await Topping.create(req.body);
    
       if (!topping) {

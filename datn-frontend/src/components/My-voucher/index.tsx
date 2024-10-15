@@ -29,8 +29,8 @@ const MyVoucher = () => {
                   return (
                     <div key={voucher._id} className='grid grid-cols-[1fr,2fr]'>
                       <div className={`${style.voucherItem}`}>
-                        <img className='w-full max-w-[50px] mt-4' src='/logo_icon.png' alt='' />
-                        <p className='text-[13px] mt-[-20px]'>TS Connect</p>
+                        <img className='w-full max-w-[50px] mt-4' src='/bus-bg.jpg' alt='' />
+                        <p className='text-[13px] mt-[-20px]'>booking car</p>
                       </div>
                       <div className='bg-[#87ACD9] rounded-[10px]'>
                         <div className='grid grid-cols-[3fr,1fr]'>

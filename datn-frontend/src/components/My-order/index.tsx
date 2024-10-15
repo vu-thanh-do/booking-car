@@ -267,7 +267,7 @@ const MyOrder = () => {
 
                           <div>
                             <div className='size'>
-                              <span className='text-sm text-[#866312]'>Size: {item.size.name}</span>
+                              <span className='text-sm text-[#866312]'>Ghế: {item.size.name}</span>
                             </div>
                             <div className={`topping ${item.toppings.length > 0 ? '' : 'hidden'}`}>
                               <span className='text-sm text-[#866312]'>

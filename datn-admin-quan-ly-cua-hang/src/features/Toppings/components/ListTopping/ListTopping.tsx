@@ -48,8 +48,8 @@ const ToppingList = () => {
       <Space>
         {user && user.role === IRoleUser.ADMIN && hasSelected && (
           <Popconfirm
-            title='Bạn thực sự muốn xóa những topping này?'
-            description='Hành động này sẽ xóa những topping đang được chọn!'
+            title='Bạn thực sự muốn xóa những giờ này?'
+            description='Hành động này sẽ xóa những giờ đang được chọn!'
             onConfirm={start}
             className='ml-[10px]'
           >

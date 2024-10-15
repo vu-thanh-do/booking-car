@@ -26,21 +26,22 @@ export const useRenderTopping = (toppings: ITopping[]) => {
       render: (index: number) => <span>{index + 1}</span>
     },
     {
-      title: 'Tên Dịch vụ',
+      title: 'Khung giờ',
       dataIndex: 'name',
       key: 'name',
       filterSearch: true,
       filters: toppings.map((topping) => ({ text: topping.name, value: topping._id })),
       onFilter: (value: any, record: ITopping) => record._id === value
       // render: (name: string) => <span className='capitalize'>{name}</span>,
-    },
-    {
-      title: 'Giá  Dịch vụ',
-      dataIndex: 'price',
-      key: 'price',
-      render: (price: number) => `${formatCurrency(price)}`,
-      sorter: (a, b) => a.price - b.price
     }
+    // ,
+    // {
+    //   title: 'Giá  Dịch vụ',
+    //   dataIndex: 'price',
+    //   key: 'price',
+    //   render: (price: number) => `${formatCurrency(price)}`,
+    //   sorter: (a, b) => a.price - b.price
+    // }
   ]
 
   /* ===================================== admin ===================================== */
@@ -67,21 +68,22 @@ export const useRenderTopping = (toppings: ITopping[]) => {
       render: (index: number) => <span>{index + 1}</span>
     },
     {
-      title: 'Tên Dịch vụ',
+      title: 'Khung giờ',
       dataIndex: 'name',
       key: 'name',
       filterSearch: true,
       filters: toppings.map((topping) => ({ text: topping.name, value: topping._id })),
       onFilter: (value: any, record: ITopping) => record._id === value
       // render: (name: string) => <span className='capitalize'>{name}</span>
-    },
-    {
-      title: 'Giá  Dịch vụ',
-      dataIndex: 'price',
-      key: 'price',
-      render: (price: number) => `${formatCurrency(price)}`,
-      sorter: (a, b) => a.price - b.price
-    },
+    }
+    ,
+    // {
+    //   title: 'Giá  Dịch vụ',
+    //   dataIndex: 'price',
+    //   key: 'price',
+    //   render: (price: number) => `${formatCurrency(price)}`,
+    //   sorter: (a, b) => a.price - b.price
+    // },
 
     {
       // title: <span className='block text-center'>Action</span>,
@@ -91,7 +93,7 @@ export const useRenderTopping = (toppings: ITopping[]) => {
       render: (_, topping: ITopping) => (
         <div className='flex items-center justify-center'>
           <Space size='middle'>
-            <Tooltip title='Cập nhật dịch vụ này'>
+            <Tooltip title='Cập nhật khung giờ này'>
               <ButtonAntd
                 size='large'
                 className='bg-primary hover:!text-white flex items-center justify-center text-white'
@@ -101,10 +103,10 @@ export const useRenderTopping = (toppings: ITopping[]) => {
                 }}
               />
             </Tooltip>
-            <Tooltip title='Xoá dịch vụ này'>
+            <Tooltip title='Xoá khung giờ này'>
               <Popconfirm
-                title='Bạn có muốn xóa dịch này?'
-                description='Bạn chắc chắn muốn xóa dịch này?'
+                title='Bạn có muốn xóa khung giờ này?'
+                description='Bạn chắc chắn muốn xóa khung giờ này?'
                 onConfirm={() => handleDelete(topping._id)}
                 onCancel={cancelDelete}
                 okButtonProps={{ style: { backgroundColor: '#3C50E0', color: '#fff' } }}
