@@ -291,4 +291,27 @@
   "updatedAt": {
     "$date": "2024-03-24T10:13:14.625Z"
   }
+},{
+  "_id": {
+    "$oid": "670fd0c246007b7eb5c2241f"
+  },
+  "code": "fwefew@fe1aAfff",
+  "title": "fewfwf",
+  "discount": 1,
+  "sale": 12312,
+  "startDate": {
+    "$date": "2024-10-15T17:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2024-10-30T17:00:00.000Z"
+  },
+  "isActive": true,
+  "desc": "e2e",
+  "user_used": [],
+  "createdAt": {
+    "$date": "2024-10-16T14:42:10.203Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-16T14:43:49.689Z"
+  }
 }]
