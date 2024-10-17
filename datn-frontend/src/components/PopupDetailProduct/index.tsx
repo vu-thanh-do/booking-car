@@ -291,19 +291,10 @@ const PopupDetailProduct = ({
                       +
                     </div>
                   </div>
-                  <button
-                    // onClick={() => {
-                    //   handleAddToCart()
-                    // }}
-                    className='cursor-auto btn-price bg-[#d8b979] text-white px-5 h-8 rounded-[32px] leading-[32px] md:ml-[30px] text-sm'
-                  >
+                  <button className='cursor-auto btn-price bg-[#d8b979] text-white px-5 h-8 rounded-[32px] leading-[32px] md:ml-[30px] text-sm'>
                     +
                     {product.sale > 0
-                      ? formatCurrency(
-                          product.sale &&
-                            // ? price * ((100 - product.sale) / 100) * quantity
-                            (price - product.sale) * quantity
-                        )
+                      ? formatCurrency(product.sale && (price - product.sale) * quantity)
                       : formatCurrency(price * quantity)}
                   </button>
                   <button
@@ -314,6 +305,9 @@ const PopupDetailProduct = ({
                   >
                     Thêm vào giỏ
                   </button>
+                </div>
+                <div>
+                  <span className='pt-2'>{product.description}</span>
                 </div>
               </div>
             </div>
@@ -362,9 +356,16 @@ const PopupDetailProduct = ({
                     </div>
                   </div>
                   <div className='custom-topping'>
+                    <div className='title flex items-center justify-between px-5 mb-2'>
+                      <div className='left text-base font-semibold'>Chọn khung giờ</div>
+                      <div className='right'>
+                        <FaAngleDown />
+                      </div>
+                    </div>
                     <div className='custom-content flex px-5 bg-white flex-wrap shadow-[0px_0px_12px_0_rgba(0,0,0,.05)] rounded'>
                       {product &&
                         product.toppings.map((item: any) => {
+                          console.log(item,'itemitemitem')
                           return (
                             <div key={item._id} className='topping-wrap flex items-center justify-between w-full'>
                               <label className={`${styles.container_checkbox} group block w-full`}>

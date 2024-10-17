@@ -103,16 +103,16 @@ export const ToppingAdd = ({ open }: ToppingAddProps) => {
           <Input size='large' placeholder='Tên giờ' />
         </Form.Item>
 
-        {/* <Form.Item
+        <Form.Item
           className='dark:text-white'
-          label='Giá Dịch vụ'
+          label='Giá '
           name='price'
           rules={[
-            { required: true, message: 'Không được bỏ trống giá Dịch vụ!' },
+            { required: true, message: 'Không được bỏ trống giá !' },
             {
               validator: (_, value) => {
                 if (value < 1000) {
-                  return Promise.reject('Tên Dịch vụ không được nhỏ hơn 1000đ!')
+                  return Promise.reject('Tên  không được nhỏ hơn 1000đ!')
                 }
                 return Promise.resolve()
               }
@@ -123,10 +123,10 @@ export const ToppingAdd = ({ open }: ToppingAddProps) => {
             formatter={(value) => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
             parser={(value: any) => value.replace(/ \s?|(\.*)/g, '')}
             size='large'
-            placeholder='Giá  Dịch vụ'
+            placeholder='Giá  '
             className='w-full'
           />
-        </Form.Item> */}
+        </Form.Item>
 
         <Form.Item>
           <Button styleClass='!w-full mt-5 py-2' type='submit'>

@@ -422,15 +422,15 @@ const FormProduct = () => {
           <Col span={24}>
             <Form.Item
               name='description'
-              label='Mô tả Xe'
+              label='Nhập tuyến đường'
               rules={[
                 {
                   required: true,
-                  message: 'Mô tả Xe là bắt buộc'
+                  message: 'tuyến đường là bắt buộc'
                 }
               ]}
             >
-              <Input.TextArea rows={4} placeholder='Mô tả Xe' />
+              <Input.TextArea rows={4} placeholder='tuyến đường' />
             </Form.Item>
           </Col>
         </Row>

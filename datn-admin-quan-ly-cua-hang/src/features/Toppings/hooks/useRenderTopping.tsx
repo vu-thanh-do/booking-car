@@ -77,13 +77,13 @@ export const useRenderTopping = (toppings: ITopping[]) => {
       // render: (name: string) => <span className='capitalize'>{name}</span>
     }
     ,
-    // {
-    //   title: 'Giá  Dịch vụ',
-    //   dataIndex: 'price',
-    //   key: 'price',
-    //   render: (price: number) => `${formatCurrency(price)}`,
-    //   sorter: (a, b) => a.price - b.price
-    // },
+    {
+      title: 'Giá  ',
+      dataIndex: 'price',
+      key: 'price',
+      render: (price: number) => `${formatCurrency(price)}`,
+      sorter: (a, b) => a.price - b.price
+    },
 
     {
       // title: <span className='block text-center'>Action</span>,
