@@ -33,7 +33,7 @@ const PreviewProduct = () => {
 
   return (
     <Drawer
-      title='Xem chi tiết Phòng'
+      title='Xem chi tiết '
       placement='right'
       open={product ? openDrawer : false}
       width={800}
@@ -88,7 +88,7 @@ const PreviewProduct = () => {
         </div>
         <div className='relative flex flex-col gap-3'>
           <div className=''>
-            <h2 className='text-lg font-semibold'>Topping</h2>
+            <h2 className='text-lg font-semibold'>Giờ</h2>
           </div>
           <Table
             dataSource={product.toppings.map((item) => ({ ...item, key: uuidv4() }))}
