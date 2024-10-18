@@ -1,63 +1,684 @@
 [{
   "_id": {
-    "$oid": "662dc48408444f5f4cb7b506"
+    "$oid": "670b926aa5b6c700bf0ce88a"
   },
-  "name": "hihi2",
+  "name": "xe khách 01",
   "images": [
     {
-      "url": "https://res.cloudinary.com/ddx8kaolc/image/upload/v1714285595/l06atw6me7zbtjbscdvp.jpg",
-      "publicId": "l06atw6me7zbtjbscdvp",
-      "filename": "Người Dơi",
+      "url": "https://res.cloudinary.com/ddx8kaolc/image/upload/v1728811618/tje06kj4xt6zo8hdwuay.jpg",
+      "publicId": "tje06kj4xt6zo8hdwuay",
+      "filename": "istockphoto-1371319562-1024x1024",
       "_id": {
-        "$oid": "662dec1c5e6a4a2d1baa6ead"
+        "$oid": "670b926aa5b6c700bf0ce88b"
       }
     }
   ],
-  "description": "hihihihi",
-  "sale": 22222,
-  "sizes": [],
+  "description": "12000",
+  "sale": 0,
+  "category": {
+    "$oid": "66461a3d716e1cf3af72b59e"
+  },
+  "sizes": [
+    {
+      "$oid": "670b926aa5b6c700bf0ce87c"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce87e"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce880"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce882"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce884"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce886"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce888"
+    },
+    {
+      "$oid": "65f3c4feb1d2a2a62638f677"
+    }
+  ],
   "toppings": [],
+  "timBooking": 1,
   "kindOfRoom": [],
   "is_deleted": false,
-  "is_active": true,
-  "idUser": {
-    "$oid": "65f4fe298d966f059974859a"
-  },
+  "is_active": false,
   "createdAt": {
-    "$date": "2024-04-28T03:37:40.498Z"
+    "$date": "2024-10-13T09:27:06.803Z"
   },
   "updatedAt": {
-    "$date": "2024-04-28T06:28:10.807Z"
+    "$date": "2024-10-13T09:27:18.021Z"
   }
 },{
   "_id": {
-    "$oid": "662dedb05e6a4a2d1baa6f56"
+    "$oid": "670b926fa5b6c700bf0ce8ab"
   },
-  "name": "san pham a",
+  "name": "xe khách 01",
   "images": [
     {
-      "url": "https://res.cloudinary.com/ddx8kaolc/image/upload/v1714285999/tawxnyevuihegxoo5opr.png",
-      "publicId": "tawxnyevuihegxoo5opr",
-      "filename": "logo_fagopet",
+      "url": "https://res.cloudinary.com/ddx8kaolc/image/upload/v1728811618/tje06kj4xt6zo8hdwuay.jpg",
+      "publicId": "tje06kj4xt6zo8hdwuay",
+      "filename": "istockphoto-1371319562-1024x1024",
       "_id": {
-        "$oid": "662dedba5e6a4a2d1baa6f64"
+        "$oid": "670b926fa5b6c700bf0ce8ac"
       }
     }
   ],
-  "description": "3213232",
-  "sale": 321312,
-  "sizes": [],
+  "description": "12000",
+  "sale": 1,
+  "category": {
+    "$oid": "66461a3d716e1cf3af72b59e"
+  },
+  "sizes": [
+    {
+      "$oid": "670b926fa5b6c700bf0ce89d"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce89f"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a1"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a3"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a5"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a7"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a9"
+    },
+    {
+      "$oid": "65f3c4feb1d2a2a62638f677"
+    }
+  ],
   "toppings": [],
-  "kindOfRoom": [],
+  "timBooking": 1,
+  "kindOfRoom": [
+    {
+      "name": "Vip",
+      "price": 2000
+    },
+    {
+      "name": "Thường",
+      "price": 1000
+    }
+  ],
   "is_deleted": false,
   "is_active": true,
-  "idUser": {
-    "$oid": "65f4fe298d966f059974859a"
-  },
   "createdAt": {
-    "$date": "2024-04-28T06:33:20.927Z"
+    "$date": "2024-10-13T09:27:11.258Z"
   },
   "updatedAt": {
-    "$date": "2024-04-28T06:33:30.576Z"
+    "$date": "2024-10-13T09:35:32.234Z"
+  }
+},{
+  "_id": {
+    "$oid": "670b9501d5c278a3db2a36a8"
+  },
+  "name": "Xe khách số 02",
+  "images": [
+    {
+      "url": "https://res.cloudinary.com/ddx8kaolc/image/upload/v1728812287/x5p5vnn7tldwg7zjxcgr.jpg",
+      "publicId": "x5p5vnn7tldwg7zjxcgr",
+      "filename": "istockphoto-1371319562-1024x1024",
+      "_id": {
+        "$oid": "670b9501d5c278a3db2a36a9"
+      }
+    }
+  ],
+  "description": "vip",
+  "sale": 0,
+  "category": {
+    "$oid": "66461a3d716e1cf3af72b59e"
+  },
+  "sizes": [
+    {
+      "$oid": "670b926aa5b6c700bf0ce87c"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce87e"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce880"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce882"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce884"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce886"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce888"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce89d"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce89f"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a3"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a1"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a5"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a7"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a9"
+    }
+  ],
+  "toppings": [],
+  "kindOfRoom": [
+    {
+      "name": "Vip",
+      "price": 2000
+    },
+    {
+      "name": "Thường",
+      "price": 1000
+    }
+  ],
+  "is_deleted": false,
+  "is_active": true,
+  "createdAt": {
+    "$date": "2024-10-13T09:38:09.780Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-13T09:38:09.780Z"
+  }
+},{
+  "_id": {
+    "$oid": "670b9508d5c278a3db2a36f3"
+  },
+  "name": "Xe khách số 02",
+  "images": [
+    {
+      "url": "https://res.cloudinary.com/ddx8kaolc/image/upload/v1728812287/x5p5vnn7tldwg7zjxcgr.jpg",
+      "publicId": "x5p5vnn7tldwg7zjxcgr",
+      "filename": "istockphoto-1371319562-1024x1024",
+      "_id": {
+        "$oid": "670b9508d5c278a3db2a36f4"
+      }
+    }
+  ],
+  "description": "vip",
+  "sale": 0,
+  "category": {
+    "$oid": "66461a3d716e1cf3af72b59e"
+  },
+  "sizes": [
+    {
+      "$oid": "670b926aa5b6c700bf0ce87c"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce87e"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce880"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce882"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce884"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce886"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce888"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce89d"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce89f"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a3"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a1"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a5"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a7"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a9"
+    }
+  ],
+  "toppings": [],
+  "kindOfRoom": [
+    {
+      "name": "Vip",
+      "price": 2000
+    },
+    {
+      "name": "Thường",
+      "price": 1000
+    }
+  ],
+  "is_deleted": false,
+  "is_active": false,
+  "createdAt": {
+    "$date": "2024-10-13T09:38:16.285Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-13T09:41:20.416Z"
+  }
+},{
+  "_id": {
+    "$oid": "670b9547b29801cf28df95b8"
+  },
+  "name": "Xe khách số 03",
+  "images": [
+    {
+      "url": "https://res.cloudinary.com/ddx8kaolc/image/upload/v1728812287/x5p5vnn7tldwg7zjxcgr.jpg",
+      "publicId": "x5p5vnn7tldwg7zjxcgr",
+      "filename": "istockphoto-1371319562-1024x1024",
+      "_id": {
+        "$oid": "670b9547b29801cf28df95b9"
+      }
+    }
+  ],
+  "description": "vip",
+  "sale": 0,
+  "category": {
+    "$oid": "670b75f0a5b6c700bf0ce6b0"
+  },
+  "sizes": [
+    {
+      "$oid": "670b926aa5b6c700bf0ce87c"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce87e"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce880"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce882"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce884"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce886"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce888"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce89d"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce89f"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a3"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a1"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a5"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a7"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a9"
+    }
+  ],
+  "toppings": [],
+  "kindOfRoom": [
+    {
+      "name": "Vip",
+      "price": 2000
+    },
+    {
+      "name": "Thường",
+      "price": 1000
+    }
+  ],
+  "is_deleted": false,
+  "is_active": true,
+  "createdAt": {
+    "$date": "2024-10-13T09:39:19.828Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-13T09:39:19.828Z"
+  }
+},{
+  "_id": {
+    "$oid": "670b958f36975b201c3095c1"
+  },
+  "name": "Xe khách số 03",
+  "images": [
+    {
+      "url": "https://res.cloudinary.com/ddx8kaolc/image/upload/v1728812287/x5p5vnn7tldwg7zjxcgr.jpg",
+      "publicId": "x5p5vnn7tldwg7zjxcgr",
+      "filename": "istockphoto-1371319562-1024x1024",
+      "_id": {
+        "$oid": "670b958f36975b201c3095c2"
+      }
+    }
+  ],
+  "description": "vip",
+  "sale": 0,
+  "category": {
+    "$oid": "670b75f0a5b6c700bf0ce6b0"
+  },
+  "sizes": [
+    {
+      "$oid": "670b926aa5b6c700bf0ce87c"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce87e"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce880"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce882"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce884"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce886"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce888"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce89d"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce89f"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a3"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a1"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a5"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a7"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a9"
+    }
+  ],
+  "toppings": [],
+  "kindOfRoom": [
+    {
+      "name": "Vip",
+      "price": 2000
+    },
+    {
+      "name": "Thường",
+      "price": 1000
+    }
+  ],
+  "is_deleted": false,
+  "is_active": false,
+  "createdAt": {
+    "$date": "2024-10-13T09:40:31.374Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-13T09:41:25.310Z"
+  }
+},{
+  "_id": {
+    "$oid": "670bbf6fdcb99fdd62eb8c6f"
+  },
+  "name": "xe khách số 04",
+  "images": [
+    {
+      "url": "https://res.cloudinary.com/ddx8kaolc/image/upload/v1728823129/xfg5infhsnkccstz9kwh.jpg",
+      "publicId": "xfg5infhsnkccstz9kwh",
+      "filename": "istockphoto-1371319562-1024x1024",
+      "_id": {
+        "$oid": "670bbf6fdcb99fdd62eb8c70"
+      }
+    }
+  ],
+  "description": "123",
+  "sale": 0,
+  "category": {
+    "$oid": "66461a3d716e1cf3af72b59e"
+  },
+  "sizes": [
+    {
+      "$oid": "670b926aa5b6c700bf0ce888"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce882"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce880"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce884"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce886"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce89d"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce87e"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce87c"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a7"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a3"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a1"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce89f"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a5"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a9"
+    }
+  ],
+  "toppings": [],
+  "kindOfRoom": [
+    {
+      "name": "VIP",
+      "price": 12000
+    },
+    {
+      "name": "THƯỜNG",
+      "price": 1300
+    }
+  ],
+  "is_deleted": false,
+  "is_active": true,
+  "createdAt": {
+    "$date": "2024-10-13T12:39:11.859Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-13T12:39:11.859Z"
+  }
+},{
+  "_id": {
+    "$oid": "670bbfcba534171a6a1aef86"
+  },
+  "name": "xe khách số 05",
+  "images": [
+    {
+      "url": "https://res.cloudinary.com/ddx8kaolc/image/upload/v1728823129/xfg5infhsnkccstz9kwh.jpg",
+      "publicId": "xfg5infhsnkccstz9kwh",
+      "filename": "istockphoto-1371319562-1024x1024",
+      "_id": {
+        "$oid": "670bbfcba534171a6a1aef87"
+      }
+    }
+  ],
+  "description": "123",
+  "sale": 1000,
+  "category": {
+    "$oid": "670b7671a5b6c700bf0ce6df"
+  },
+  "sizes": [
+    {
+      "$oid": "670b926aa5b6c700bf0ce888"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce882"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce880"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce884"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce886"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce89d"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce87e"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce87c"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a7"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a3"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a1"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce89f"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a5"
+    },
+    {
+      "$oid": "670b926fa5b6c700bf0ce8a9"
+    }
+  ],
+  "toppings": [],
+  "kindOfRoom": [
+    {
+      "name": "VIP",
+      "price": 12000
+    },
+    {
+      "name": "THƯỜNG",
+      "price": 1300
+    }
+  ],
+  "is_deleted": false,
+  "is_active": true,
+  "createdAt": {
+    "$date": "2024-10-13T12:40:43.244Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-13T12:46:06.799Z"
+  }
+},{
+  "_id": {
+    "$oid": "6710f94371e1d95b7371a438"
+  },
+  "name": "xe bus demo",
+  "images": [
+    {
+      "url": "https://res.cloudinary.com/ddx8kaolc/image/upload/v1729165596/uva3ydzaohckqqhh8dni.jpg",
+      "publicId": "uva3ydzaohckqqhh8dni",
+      "filename": "istockphoto-1371319562-1024x1024",
+      "_id": {
+        "$oid": "6710f94371e1d95b7371a439"
+      }
+    }
+  ],
+  "description": "điểm đi : hà nội,\nđiểm đến : thái bình",
+  "sale": 0,
+  "category": {
+    "$oid": "670b7666a5b6c700bf0ce6d9"
+  },
+  "sizes": [
+    {
+      "$oid": "6710f94371e1d95b7371a436"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce87c"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce87e"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce880"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce884"
+    },
+    {
+      "$oid": "670b926aa5b6c700bf0ce882"
+    }
+  ],
+  "toppings": [
+    {
+      "$oid": "6710f8e671e1d95b7371a40d"
+    },
+    {
+      "$oid": "6710f8e071e1d95b7371a40a"
+    }
+  ],
+  "kindOfRoom": [
+    {
+      "name": "xe vip",
+      "price": 2000
+    }
+  ],
+  "is_deleted": false,
+  "is_active": true,
+  "createdAt": {
+    "$date": "2024-10-17T11:47:15.567Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-17T11:47:15.567Z"
   }
 }]
