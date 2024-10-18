@@ -2,7 +2,10 @@ import { Table } from 'antd'
 import { IToppingRefProduct } from '~/types'
 import { formatCurrency } from '~/utils'
 
-export default function TableChildrend({ products }: any) {
+export default function TableChildrend({ products ,totalPrice }: any) {
+
+  const kindOfRoom = products
+  console.log(kindOfRoom,'kindOfRoom')
   const columns = [
     {
       title: 'Tên Xe',
@@ -19,32 +22,12 @@ export default function TableChildrend({ products }: any) {
         <img src={image} className='object-cover w-20 h-20 rounded-lg cursor-pointer mb-1' alt='' />
       )
     },
-
+   
     {
-      title: 'Ghế',
-      dataIndex: 'size',
-      key: 'size',
-      width: 170,
-      render: (size: any) => {
-        return (
-          <div className='relative grid grid-cols-2'>
-            <p className='border-r-graydark w-full pr-3 uppercase border-r border-opacity-50'>{size.name}</p>
-            <p className='w-full pl-3'>{formatCurrency(size.price)}</p>
-          </div>
-        )
-      }
-    },
-    {
-      title: 'Số Lượng',
-      dataIndex: 'quantity',
-      key: 'quantity',
-      width: 100
-    },
-    {
-      title: 'Giá',
-      dataIndex: 'price',
-      key: 'price',
-      render: (price: number) => formatCurrency(price)
+      title: 'Tổng tiền',
+      dataIndex: 'totalPrice',
+      key: 'totalPrice',
+      render: (price: number) => formatCurrency(totalPrice)
     },
     {
       dataIndex: 'action',
