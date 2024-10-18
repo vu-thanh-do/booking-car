@@ -307,7 +307,7 @@ const ListConfirmOrders = () => {
     note: item.inforOrderShipping.noteShipping,
     priceShip: item.priceShipping,
     products: item.items,
-    totalPrice: Number(item?.items?.[0]?.price ||0) + Number(item?.items?.[0]?.kindOfRoom?.[0]?.price || 0),
+    totalPrice: Number(item?.items?.[0]?.price ||0) + Number(item?.items?.[0]?.kindOfRoom?.[0]?.price || 0) + Number(item?.items?.[0]?.toppings?.[0]?.price || 0),
     status: item.status,
     moneyPromotion: item.moneyPromotion,
     timeOrder: item.createdAt,

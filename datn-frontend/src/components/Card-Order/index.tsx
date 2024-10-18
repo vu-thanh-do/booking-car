@@ -113,23 +113,23 @@ const CardOrder = ({ product }: CardOrderProps) => {
                 </div>
               </div>
               <div className='flex select-none'>
-                <div
+                {/* <div
                   className={`quantity w-[20px] cursor-pointer h-[20px] bg-[#799dd9] rounded-full text-white flex justify-around items-center ${
                     (updateCartDbRes.isLoading || deleteCartDBRes.isLoading) && 'cursor-no-drop'
                   }`}
                   onClick={() => handleUpdateQuantity('decreamentQuantity', item, index)}
                 >
                   <AiOutlineLine className='' />
-                </div>
-                <div className='amount mx-2'>{item.quantity}</div>
-                <div
+                </div> */}
+                {/* <div className='amount mx-2'>{item.quantity}</div> */}
+                {/* <div
                   className={`quantity w-[20px] cursor-pointer h-[20px] bg-[#799dd9] rounded-full text-white flex justify-around items-center ${
                     (updateCartDbRes.isLoading || deleteCartDBRes.isLoading) && 'cursor-no-drop'
                   }`}
                   onClick={() => handleUpdateQuantity('increamentQuantity', item, index)}
                 >
                   <AiOutlinePlus />
-                </div>
+                </div> */}
               </div>
             </div>
           ))}
