@@ -15,6 +15,7 @@ import { useCreateOrderMutation } from '../../store/slices/order'
 import { resetAllCart } from '../../store/slices/cart.slice'
 import { IOrderCheckout } from '../../store/slices/types/order.type'
 import { saveFormOrder } from '../../store/slices/order.slice'
+import axios from 'axios'
 
 interface Payload extends JwtPayload {
   noteOrder?: string
@@ -34,6 +35,7 @@ const PaymentResult = () => {
   const { auth, products } = useAppSelector((state: RootState) => {
     return state.persistedReducer
   })
+  console.log(order, 'orderorderorder')
   const [searchParams] = useSearchParams()
 
   const handleWindowResize = () => {
@@ -174,6 +176,7 @@ const PaymentResult = () => {
           if (!order.data) {
             navigate('/')
           } else {
+            console.log(order.data, 'data day ne')
             const orderVnpay: IOrderCheckout = {
               user:
                 (searchParams.get('userId') as string) === 'undefined'
@@ -185,6 +188,8 @@ const PaymentResult = () => {
               priceShipping: order.data.priceShipping,
               noteOrder: order.data.noteOrder,
               paymentMethodId: 'vnpay',
+              startDate: order.data.startDate,
+              endDate: order.data.endDate,
               inforOrderShipping: {
                 name: order.data.inforOrderShipping.name,
                 email: order.data.inforOrderShipping.email,
@@ -216,6 +221,10 @@ const PaymentResult = () => {
                   )
                   ClientSocket.createOrder(res.order.orderNew.user)
                   setIdOrder(res.order.orderNew._id)
+                  axios
+                    .put('http://localhost:8000/api/order/confirmed/' + res.order.orderNew._id)
+                    .then((ok) => console.log(ok))
+                    .catch((err) => console.log(err))
                 }
               })
           }
@@ -242,8 +251,9 @@ const PaymentResult = () => {
               } else {
                 dispatch(resetAllCart())
                 ClientSocket.sendNotificationToAdmin(
-                  `Đơn hàng "${res.order.orderNew._id.toUpperCase()}" vừa được tạo bởi khách hàng "${res.order.orderNew
-                    ?.inforOrderShipping?.name}" và đang chờ xác nhận.`
+                  `Đơn hàng "${res.order.orderNew._id.toUpperCase()}" vừa được tạo bởi khách hàng "${
+                    res.order.orderNew?.inforOrderShipping?.name
+                  }" và đang chờ xác nhận.`
                 )
                 ClientSocket.createOrder(res.order.orderNew.user)
                 localStorage.removeItem('storeNote')

@@ -7,6 +7,7 @@ import { ColumnType } from 'antd/lib/table'
 import { useRef, useState } from 'react'
 import Highlighter from 'react-highlight-words'
 import { BsFillPencilFill, BsFillTrashFill } from 'react-icons/bs'
+import { useNavigate } from 'react-router-dom'
 import { Button } from '~/components'
 import Loading from '~/components/Loading/Loading'
 import { cancelDelete } from '~/features/Toppings'
@@ -23,6 +24,7 @@ import { pause } from '~/utils/pause'
 type DataIndex = keyof IUserDataType
 export const ListCustomers = () => {
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
   const [deleteUser] = useDeleteUserMutation()
   const [options, setoptions] = useState({
     page: 1,
@@ -155,7 +157,7 @@ export const ListCustomers = () => {
       key: 'loyalCustomers',
       render: (loyalCustomers: boolean) => {
         console.log(loyalCustomers)
-        return <span className='capitalize'>{loyalCustomers == true ? "Thân thiết" :"Default"}</span>
+        return <span className='capitalize'>{loyalCustomers == true ? 'Thân thiết' : 'Default'}</span>
       }
     },
     {
@@ -186,6 +188,17 @@ export const ListCustomers = () => {
       render: (_: any, customer: IUser) => (
         <div className='flex items-center justify-center'>
           <Space size='middle'>
+            <Tooltip title='Cập nhật thông tin khách hàng này'>
+              <ButtonAnt
+                size='large'
+                className='bg-primary hover:!text-white flex items-center justify-center text-white'
+                onClick={() => {
+                  navigate('/manager/booking/' + customer._id)
+                }}
+              >
+                đặt vé
+              </ButtonAnt>
+            </Tooltip>
             <Tooltip title='Cập nhật thông tin khách hàng này'>
               <ButtonAnt
                 size='large'

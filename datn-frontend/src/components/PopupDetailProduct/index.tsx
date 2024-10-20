@@ -210,7 +210,7 @@ const PopupDetailProduct = ({
       const filteredChairs = dateBooked
         .filter((booking: any) => {
           const bookingDate = dayjs(booking.startDate).startOf('day') // Ngày của booking
-          const bookingHour = parseInt(booking.endDate.split(':')[0], 10) // Giờ của booking
+          const bookingHour = parseInt(booking?.endDate?.split(':')?.[0], 10) // Giờ của booking
 
           // So sánh ngày và giờ
           return selectedDate.isSame(bookingDate) && selectedHour === bookingHour

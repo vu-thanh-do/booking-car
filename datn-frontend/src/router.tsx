@@ -24,6 +24,7 @@ import Signup from './pages/Sign-up/Signup'
 import { createBrowserRouter } from 'react-router-dom'
 import FeedBack from './pages/FeedBack'
 import GetPoint from './pages/GetPoint'
+import ProductV2 from './pages/Products/ProductV2'
 const routes = createBrowserRouter([
   {
     path: '/',
@@ -49,8 +50,16 @@ const routes = createBrowserRouter([
     path: '/products',
     element: <ClientLayout />,
     children: [
-      {
+      // {
+      //   index: true,
+      //   element: <ProductsPage />
+      // },
+       {
         index: true,
+        element: <ProductV2 />
+      },
+        {
+        path: 'v1',
         element: <ProductsPage />
       },
       {

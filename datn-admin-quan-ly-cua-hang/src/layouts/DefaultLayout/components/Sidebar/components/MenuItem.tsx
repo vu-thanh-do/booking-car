@@ -45,6 +45,8 @@ export const items: MenuProps['items'] = [
     getItem(<NavLink to={`/manager/customers`}>Khách hàng</NavLink>, 'customers', <FaUserFriends />),
     getItem(<NavLink to={`/manager/staffs`}>Nhân viên</NavLink>, 'staffs', <FaUserEdit />)
   ]),
+  getItem(<NavLink to={`/manager/booking`}>Đặt vé cho khách</NavLink>, 'booking', <FaClipboardList />),
+
   // getItem(<a href={`http://localhost:4001/admin/chat`} target='_blank'>Hỗ trợ khách hàng</a>, 'dashboardx'),
   // getItem(<NavLink to={`/manager/feedback`} >Quản lý đánh giá</NavLink>, 'dashboardxs'),
   // getItem(<NavLink to={`/settings`}>Cài đặt</NavLink>, 'settings', <SettingOutlined />)

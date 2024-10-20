@@ -24,7 +24,7 @@ const ProductsPage = () => {
     if (queryConfig.searchName != '' && ProductList?.docs?.length == 0) {
       const id = setTimeout(() => {
         navigate({
-          pathname: '/products',
+          pathname: '/products/v1',
           search: createSearchParams({
             ...queryConfig,
             searchName: ''

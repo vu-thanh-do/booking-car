@@ -31,6 +31,9 @@ export interface IOrderCheckout {
   priceShipping: number | string
   noteOrder: string | undefined
   paymentMethodId: string
+  status?: string
+  startDate?: string
+  endDate?: string
   inforOrderShipping: inforOrderShipping
   moneyPromotion:
     | {

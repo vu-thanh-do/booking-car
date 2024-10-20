@@ -1,5 +1,5 @@
 import { Divider, List, ListItem, ListItemText, Paper, Popover, Stack, Typography } from '@mui/material'
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 
 import { SerializedError } from '@reduxjs/toolkit'
@@ -11,6 +11,7 @@ import NotFound from '../../pages/Not-Found/NotFound'
 import { getIdCate } from '../../store/slices/categories'
 import { savePage } from '../../store/slices/product.slice'
 import SKProduct from '../Skeleton/SKProduct'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 
 interface SidebarCateProps {
   categories: ICategory[] | undefined
@@ -23,9 +24,12 @@ const SidebarCate = ({ categories, error, isLoading }: SidebarCateProps) => {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
   const dispatch = useAppDispatch()
   const [selectedCategory, setSelectedCategory] = useState('')
+  const [searchParams] = useSearchParams()
+  const cateId = searchParams.get('idCate')
+  const cateName = searchParams.get('nameCate')
 
   const { products } = useAppSelector((state) => state.persistedReducer.products)
-
+  const navigate = useNavigate()
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget)
   }
@@ -33,7 +37,13 @@ const SidebarCate = ({ categories, error, isLoading }: SidebarCateProps) => {
   const handleClose = () => {
     setAnchorEl(null)
   }
-
+  useEffect(() => {
+    if (cateId) {
+      dispatch(getIdCate({ idCate: cateId, nameCate: cateName }))
+      dispatch(savePage(1))
+      setSelectedCategory(cateId)
+    }
+  }, [cateId, cateName])
   if (error) return <NotFound />
   if (isLoading)
     return (
@@ -62,6 +72,7 @@ const SidebarCate = ({ categories, error, isLoading }: SidebarCateProps) => {
               onClick={() => {
                 dispatch(getIdCate(''))
                 setSelectedCategory('')
+                navigate('/products/v1')
               }}
               className={`cursor-pointer hover:bg-gray-100 transition-all duration-300 px-[16px] flex justify-between border border-transparent border-b-[#f1f1f1] py-[8px] last:border-none ${
                 selectedCategory == '' ? 'bg-gray-200' : ''
@@ -73,35 +84,37 @@ const SidebarCate = ({ categories, error, isLoading }: SidebarCateProps) => {
           {categories &&
             Array.isArray(categories) &&
             categories?.length > 0 &&
-            categories?.map((category: ICategory) => (
-              <div
-                key={category._id}
-                className='block'
-                // to={{
-                //   pathname: '/products',
-                //   search: createSearchParams({
-                //     ...queryConfig,
-                //     c: category._id as string
-                //   }).toString()
-                // }}
-              >
+            categories
+              ?.filter((it) => it._id == cateId)
+              ?.map((category: ICategory) => (
                 <div
-                  onClick={() => {
-                    dispatch(getIdCate({ idCate: category._id, nameCate: category.name }))
-                    dispatch(savePage(1))
-                    setSelectedCategory(category._id)
-                  }}
-                  className={`cursor-pointer hover:bg-gray-100 transition-all duration-300 px-[16px] flex justify-between border border-transparent  border-b-[#f1f1f1] py-[8px] last:border-none ${
-                    selectedCategory === category._id ? 'bg-gray-200' : ''
-                  }`}
+                  key={category._id}
+                  className='block'
+                  // to={{
+                  //   pathname: '/products',
+                  //   search: createSearchParams({
+                  //     ...queryConfig,
+                  //     c: category._id as string
+                  //   }).toString()
+                  // }}
                 >
-                  <div className='cat-name capitalize'>{category.name}</div>
-                  <div className='cat-amount text-[#8a733f]'>
-                    {products && products?.docs?.filter((item) => item.category?._id == category._id).length}
+                  <div
+                    onClick={() => {
+                      dispatch(getIdCate({ idCate: category._id, nameCate: category.name }))
+                      dispatch(savePage(1))
+                      setSelectedCategory(category._id)
+                    }}
+                    className={`cursor-pointer hover:bg-gray-100 transition-all duration-300 px-[16px] flex justify-between border border-transparent  border-b-[#f1f1f1] py-[8px] last:border-none ${
+                      selectedCategory === category._id ? 'bg-gray-200' : ''
+                    }`}
+                  >
+                    <div className='cat-name capitalize'>{category.name}</div>
+                    <div className='cat-amount text-[#8a733f]'>
+                      {products && products?.docs?.filter((item) => item.category?._id == category._id).length}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
         </div>
       </div>
       <div
@@ -126,7 +139,7 @@ const SidebarCate = ({ categories, error, isLoading }: SidebarCateProps) => {
         <Paper elevation={3} sx={{ width: '25rem' }}>
           <Fragment>
             <Typography component={'h1'} color='text.primary' fontWeight={500} padding={1}>
-            Tuyến đường
+              Tuyến đường
             </Typography>
           </Fragment>
           <Divider />

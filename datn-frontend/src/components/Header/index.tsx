@@ -41,7 +41,7 @@ const Header = () => {
 
   const onSubmitSearch = handleSubmit((data: { name: string }) => {
     navigate({
-      pathname: '/products',
+      pathname: '/products/v1',
       search: createSearchParams({
         ...queryConfig,
         searchName: data.name

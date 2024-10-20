@@ -1,4 +1,5 @@
 import {
+  BookingEndUser,
   CategoryPage,
   CustomerPage,
   Dashboard,
@@ -52,6 +53,7 @@ const routers = createBrowserRouter([
           { path: 'vouchers', element: <VoucherPage /> },
           { path: 'categories', element: <CategoryPage /> },
           { path: 'orders', element: <OrderPage /> },
+          { path: 'booking/:id', element: <BookingEndUser /> },
           { path: 'category-blog', element: <CategoryBlogPage /> },
           { path: 'blogs', element: <BlogPage /> },
           { path: 'sliders', element: <SliderPage /> },
