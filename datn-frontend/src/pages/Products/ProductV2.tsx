@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { RootState, useAppSelector } from '../../store'
 import { createSearchParams, useNavigate } from 'react-router-dom'
 
@@ -26,7 +26,13 @@ const ProductV2 = () => {
     })
     setFilteredRoutes(filtered)
   }
-
+  useEffect(() => {
+    //
+    if (ProductList?.docs) {
+      setFilteredRoutes(ProductList?.docs)
+    }
+    console.log(`1`)
+  }, [ProductList?.docs])
   return (
     <div>
       <div className='bg-white shadow-md rounded-lg p-6 flex items-center space-x-6 justify-center'>
@@ -112,7 +118,9 @@ const ProductV2 = () => {
                     <i className='fas fa-dot-circle text-red-500 mr-2'></i>
                     <span className='font-bold'>{end}</span>
                   </div>
-                  <div className='border-t border-dashed border-red-500 my-2'></div>
+                  <div className='border-t border-dashed border-red-500 my-2 pt-2 font-bold'>
+                    {cate?.name}
+                  </div>
                   <div className='flex items-center mb-2'>
                     <span className='bg-gray-200 text-gray-800 text-sm font-medium px-2 py-1 rounded'>
                       Limousine {cate?.sizes?.length} chỗ

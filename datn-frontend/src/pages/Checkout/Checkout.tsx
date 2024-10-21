@@ -218,14 +218,14 @@ const Checkout = () => {
                   }" và đang chờ xác nhận.`
                 )
                 ClientSocket.createOrder(res.order.orderNew.user)
-                window.location.href = res.order.url
+                // window.location.href = res.order.url
               }
             })
         } else if (data.paymentMethod == 'vnpay') {
           vnpayPayment(dataForm)
             .unwrap()
             .then(({ url }) => {
-              window.location.href = url
+              // window.location.href = url
             })
             .catch((err) => {
               toast.error(err.data.message)

@@ -2,10 +2,9 @@ import { Table } from 'antd'
 import { IToppingRefProduct } from '~/types'
 import { formatCurrency } from '~/utils'
 
-export default function TableChildrend({ products ,totalPrice }: any) {
-
+export default function TableChildrend({ products, totalPrice, itm }: any) {
+  console.log(products, 'products')
   const kindOfRoom = products
-  console.log(kindOfRoom,'kindOfRoom')
   const columns = [
     {
       title: 'Tên Xe',
@@ -22,7 +21,38 @@ export default function TableChildrend({ products ,totalPrice }: any) {
         <img src={image} className='object-cover w-20 h-20 rounded-lg cursor-pointer mb-1' alt='' />
       )
     },
-   
+    {
+      title: 'Giá',
+      dataIndex: 'price',
+      key: 'price',
+
+      render: (price: number) => formatCurrency(price)
+    },
+    {
+      title: 'Giờ chạy',
+      dataIndex: 'topping',
+      key: 'topping',
+      render: (topping: any) => {
+        console.log(topping, 'topping')
+        return (
+          <p>
+            {topping?.[0]?.name} giờ - {formatCurrency(topping?.[0]?.price)}
+          </p>
+        )
+      }
+    },
+    {
+      title: 'Loại ghế',
+      dataIndex: 'kindOfRoom',
+      key: 'kindOfRoom',
+      render: (kindOfRoom: any) => {
+        return (
+          <p>
+            {kindOfRoom?.[0]?.name} - {formatCurrency(kindOfRoom?.[0]?.price)}
+          </p>
+        )
+      }
+    },
     {
       title: 'Tổng tiền',
       dataIndex: 'totalPrice',
@@ -35,15 +65,14 @@ export default function TableChildrend({ products ,totalPrice }: any) {
       width: 200
     }
   ]
-
   const dataPush = products?.map((item: any) => ({
     name: item.name,
     quantity: item.quantity,
     size: item.size,
     topping: item.toppings,
     price: item.price,
-    image: item.image
+    image: item.image,
+    kindOfRoom: item.kindOfRoom
   }))
-
   return <Table className='my-3' bordered columns={columns} dataSource={dataPush} pagination={false} />
 }

@@ -348,6 +348,7 @@ const ListPendingOrders = () => {
 
     payment: item.paymentMethodId,
     user_order: item?.user?._id,
+    itm : item?.items,
     note: item.inforOrderShipping.noteShipping,
     priceShip: item.priceShipping,
     quantity: item.items.length,

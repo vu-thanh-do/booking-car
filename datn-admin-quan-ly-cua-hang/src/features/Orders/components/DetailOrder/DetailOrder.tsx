@@ -91,12 +91,6 @@ const DetailOrder = ({ open }: DetailOrderProps) => {
       dataIndex: 'size',
       key: 'size',
       render: (size) => <span className='font-semibold text-base'>{size.name}</span>
-    },
-    {
-      title: 'Giá',
-      dataIndex: 'priceV2',
-      key: 'priceV2',
-      render: (price: number) => <span className='font-semibold text-base'>{formatCurrency(price)}</span>
     }
   ]
   const orderProducts = orderData?.products?.map((item: any, index: number) => ({
